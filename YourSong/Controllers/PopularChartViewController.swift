@@ -8,75 +8,39 @@
 import UIKit
 import SnapKit
 import Then
+import XLPagerTabStrip
 
 enum PopularChartIdentifier: String {
     case first = "oneToFifty"
     case second = "fiftyOneToOneHundred"
 }
 
-class PopularChartViewController: UIViewController {
+class PopularChartViewController: ButtonBarPagerTabStripViewController {
     
-    let buttonOne = UIButton().then{
-        $0.setTitle("1~50위", for: .normal)
-        $0.layer.cornerRadius = 5.0
-        $0.setTitleColor(.white, for: .normal)
-        $0.setTitleColor(.systemGray, for: .highlighted)
-        $0.backgroundColor = .black
-        $0.addTarget(self, action: #selector(requestPopularChartFirst(_:)), for: .touchUpInside)
-    }
-    
-    let buttonTwo = UIButton().then{
-        $0.setTitle("51~100위", for: .normal)
-        $0.layer.cornerRadius = 5.0
-        $0.setTitleColor(.white, for: .normal)
-        $0.setTitleColor(.systemGray, for: .highlighted)
-        $0.backgroundColor = .black
-        $0.addTarget(self, action: #selector(requestPopularChartSecond(_:)), for: .touchUpInside)
-    }
-    
-    // singleton
-    private let geumyoungCrawlingManager = GeumyoungCrawlingManager.shared
-    
+
     override func viewDidLoad() {
+        setButtonBarAttribute() // viewDidLoad 보다 반드시 먼저!
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
-        setUI()
-        setLayout()
-        // Do any additional setup after loading the view.
     }
     
-    @objc func requestPopularChartFirst(_ sender: UIButton){
-        geumyoungCrawlingManager.loadPopularChart(identifier: PopularChartIdentifier.first.rawValue){ response in
-            for item in response{
-                print(item)
-            }
-        }
-    }
-    @objc func requestPopularChartSecond(_ sender: UIButton){
-        geumyoungCrawlingManager.loadPopularChart(identifier: PopularChartIdentifier.second.rawValue){ response in
-            for item in response{
-                print(item)
-            }
-        }
-    }
-}
-
-extension PopularChartViewController {
-    func setUI(){
-        self.view.addSubview(buttonOne)
-        self.view.addSubview(buttonTwo)
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        let total = TotalViewController()
+        let ballade = BalladeViewController()
+        let dance = DanceViewController()
+        let hiphop = HiphopViewController()
+        
+        return [total,ballade,dance,hiphop]
     }
     
-    func setLayout(){
-        buttonOne.snp.makeConstraints{
-            $0.top.trailing.leading.equalTo(self.view.safeAreaLayoutGuide)
-        }
-        
-        buttonTwo.snp.makeConstraints{
-            $0.top.equalTo(self.buttonOne.snp.bottom).offset(30)
-            $0.trailing.leading.equalTo(self.view.safeAreaLayoutGuide)
-        }
+    func setButtonBarAttribute(){
+        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .clear
+        settings.style.buttonBarHeight = 58
+        settings.style.selectedBarBackgroundColor = UIColor(red: 234/255.0, green: 234/255.0, blue: 234/255.0, alpha: 1.0)
+        settings.style.selectedBarBackgroundColor = .black
+        settings.style.buttonBarItemTitleColor = .black
+        settings.style.selectedBarHeight = 3.0
     }
 }
 

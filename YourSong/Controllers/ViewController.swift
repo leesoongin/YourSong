@@ -26,7 +26,7 @@ class ViewController: UITabBarController {
 //        todayMusicViewController.tabBarItem.image = UIImage(named: "")
         
         
-        let popularChartViewController = PopularChartViewController()
+        let popularChartViewController = UIStoryboard.init(name: "PopularChart", bundle: nil).instantiateViewController(withIdentifier: "PopularCharts") as! PopularChartViewController
         popularChartViewController.tabBarItem.title = "인기차트"
         
         let musicSearchViewController = UINavigationController(rootViewController: MusicSearchViewController())
