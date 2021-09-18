@@ -19,7 +19,7 @@ class PopularChartViewController: ButtonBarPagerTabStripViewController {
     
 
     override func viewDidLoad() {
-        setButtonBarAttribute() // viewDidLoad 보다 반드시 먼저!
+        setButtonBarAttribute() // viewDidLoad 보다 반드시 먼저
         super.viewDidLoad()
         self.view.backgroundColor = .white
     }

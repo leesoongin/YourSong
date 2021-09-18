@@ -17,8 +17,8 @@ import Alamofire
  */
 
 enum AddressCollection: String {
-    case oneToFiftyURL = "https://kysing.kr/popular/"
-    case fiftyOneToOneHundredURL = "https://kysing.kr/popular/?range=2"
+    case oneToFiftyURL = "https://kysing.kr/popular/?period=w"
+    case fiftyOneToOneHundredURL = "https://kysing.kr/popular/?period=w&range=2"
 }
 
 class GeumyoungCrawlingManager {
