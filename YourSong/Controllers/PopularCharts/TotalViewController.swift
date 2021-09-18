@@ -9,6 +9,7 @@ import UIKit
 import XLPagerTabStrip
 import Then
 import SnapKit
+import NVActivityIndicatorView
 
 class TotalViewController: UIViewController,IndicatorInfoProvider {
     let tableView = UITableView(frame: .zero, style: .plain).then{
@@ -17,21 +18,27 @@ class TotalViewController: UIViewController,IndicatorInfoProvider {
         $0.estimatedRowHeight = 150
         $0.showsVerticalScrollIndicator = false
     }
+    var indicator: NVActivityIndicatorView?
+
     
     let crawlingManager = GeumyoungCrawlingManager.shared
     let chartManager = PopularChartManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        config()
+        setUI()
+        setLayout()
+        
+        guard let indicator = self.indicator else { return }
+        indicator.startAnimating()
         
         crawlingManager.loadPopularChart(identifier: "oneToFifty") { response in
             self.chartManager.extendPopularCharts(charts: response)
+            indicator.stopAnimating()
             self.tableView.reloadData()
+            
         }
-        
-        config()
-        setLayout()
-
         print("total viewdidload")
     }
     
@@ -44,8 +51,18 @@ class TotalViewController: UIViewController,IndicatorInfoProvider {
         return IndicatorInfo(title: "전체")
     }
     
+    func config(){
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+    
+    func setUI(){
+        indicator = NVActivityIndicatorView(frame: CGRect(x:self.view.frame.size.width/2-25 , y: self.view.frame.size.height/2-80, width: 50, height: 50), type: .circleStrokeSpin, color: .black, padding: 0)
+    }
+    
     func setLayout(){
         self.view.addSubview(tableView)
+        self.view.addSubview(indicator!)
         let tableViewSideMargin: CGFloat = 8
         
         tableView.snp.makeConstraints{
@@ -55,10 +72,8 @@ class TotalViewController: UIViewController,IndicatorInfoProvider {
         }
     }
     
-    func config(){
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-    }
+   
+    
 }
 
 extension TotalViewController: UITableViewDataSource {
