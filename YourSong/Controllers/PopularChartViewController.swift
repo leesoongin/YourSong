@@ -47,10 +47,18 @@ class PopularChartViewController: UIViewController {
     }
     
     @objc func requestPopularChartFirst(_ sender: UIButton){
-        geumyoungCrawlingManager.loadPopularChart(identifier: PopularChartIdentifier.first.rawValue)
+        geumyoungCrawlingManager.loadPopularChart(identifier: PopularChartIdentifier.first.rawValue){ response in
+            for item in response{
+                print(item)
+            }
+        }
     }
     @objc func requestPopularChartSecond(_ sender: UIButton){
-        geumyoungCrawlingManager.loadPopularChart(identifier: PopularChartIdentifier.second.rawValue)
+        geumyoungCrawlingManager.loadPopularChart(identifier: PopularChartIdentifier.second.rawValue){ response in
+            for item in response{
+                print(item)
+            }
+        }
     }
 }
 

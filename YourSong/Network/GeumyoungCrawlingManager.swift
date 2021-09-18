@@ -26,8 +26,15 @@ class GeumyoungCrawlingManager {
     
     private init() { }
     
-    func loadPopularChart(identifier: String){
+    func loadPopularChart(identifier: String, completion: @escaping ([PopularChartMusic])->(Void)){
         var url: String = ""
+        var rank: String?
+        var rankUp: String?
+        var rankDown: String?
+        var number: String?
+        var title: String?
+        var artist: String?
+        var popularChart: [PopularChartMusic] = [PopularChartMusic]()
         
         if identifier == "oneToFifty" {
             url = AddressCollection.oneToFiftyURL.rawValue
@@ -52,17 +59,20 @@ class GeumyoungCrawlingManager {
                 // 곡 제목
                 let singTitles: Elements = try doc.select("#popular_chart_frm > div > ul")
                 for element in singTitles {
-                    print(try element.select("li.popular_chart_chk > label > span.popular_chart_link").text()) // 순위
-                    print(try element.select("li.popular_chart_chk > label > span.popular_chart_up").text()) // 순위 업
-                    print(try element.select("li.popular_chart_chk > label > span.popular_chart_down").text()) // 순위 다운
-                    print(try element.select("li.popular_chart_num").text()) // 곡 번호
+                    rank = try element.select("li.popular_chart_chk > label > span.popular_chart_link").text() // 순위
+                    rankUp = try element.select("li.popular_chart_chk > label > span.popular_chart_up").text() // 순위 업
+                    rankDown = try element.select("li.popular_chart_chk > label > span.popular_chart_down").text() // 순위 다운
+                    number = try element.select("li.popular_chart_num").text() // 곡 번호
                     
                     for ele in try element.select("li.popular_chart_tit.clear"){
-                        print(try ele.select("span")[0].text()) // 제목
-                        print(try ele.select("span")[1].text()) // 가수
+                        title = try ele.select("span")[0].text() // 제목
+                        artist = try ele.select("span")[1].text() // 가수
                     }
+                    
+                    popularChart.append(PopularChartMusic(rank: rank, rankUp: rankUp, rankDown: rankDown, number: number, title: title, artist: artist))
                 }
-                
+                popularChart.removeFirst() // 맨 앞 요소는 표 정보라서 제외 ㅇㅇ
+                completion(popularChart)
             } catch {
                 print("crawl error")
             }// catch

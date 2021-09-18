@@ -18,6 +18,8 @@
 		A868EE8E26F25BA3002BF67B /* TodayMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */; };
 		A868EE9126F25BD2002BF67B /* OwnMusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9026F25BD2002BF67B /* OwnMusicListViewController.swift */; };
 		A868EE9626F2650A002BF67B /* GeumyoungCrawlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */; };
+		A868EE9B26F27435002BF67B /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9A26F27435002BF67B /* Music.swift */; };
+		A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */; };
 		E593577EE9CA434740B4B102 /* Pods_YourSong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E180D60C031C1602138DC /* Pods_YourSong.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMusicViewController.swift; sourceTree = "<group>"; };
 		A868EE9026F25BD2002BF67B /* OwnMusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusicListViewController.swift; sourceTree = "<group>"; };
 		A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeumyoungCrawlingManager.swift; sourceTree = "<group>"; };
+		A868EE9A26F27435002BF67B /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartMusic.swift; sourceTree = "<group>"; };
 		AE5E180D60C031C1602138DC /* Pods_YourSong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourSong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,6 +65,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A854CB0B26F6044200D39D6D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		A868EE4726F254FB002BF67B = {
 			isa = PBXGroup;
 			children = (
@@ -82,8 +93,10 @@
 		A868EE5226F254FB002BF67B /* YourSong */ = {
 			isa = PBXGroup;
 			children = (
+				A868EE9926F272B4002BF67B /* Model */,
 				A868EE9426F264A7002BF67B /* Network */,
 				A868EE8626F25AE7002BF67B /* Controllers */,
+				A854CB0B26F6044200D39D6D /* Storyboards */,
 				A868EE5326F254FB002BF67B /* AppDelegate.swift */,
 				A868EE5526F254FB002BF67B /* SceneDelegate.swift */,
 				A868EE5C26F254FC002BF67B /* Assets.xcassets */,
@@ -112,6 +125,15 @@
 				A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A868EE9926F272B4002BF67B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A868EE9A26F27435002BF67B /* Music.swift */,
+				A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E1CDFE7A2737F65B603C4FA1 /* Pods */ = {
@@ -243,6 +265,8 @@
 				A868EE5426F254FB002BF67B /* AppDelegate.swift in Sources */,
 				A868EE9626F2650A002BF67B /* GeumyoungCrawlingManager.swift in Sources */,
 				A868EE8826F25B00002BF67B /* PopularChartViewController.swift in Sources */,
+				A868EE9B26F27435002BF67B /* Music.swift in Sources */,
+				A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */,
 				A868EE9126F25BD2002BF67B /* OwnMusicListViewController.swift in Sources */,
 				A868EE8E26F25BA3002BF67B /* TodayMusicViewController.swift in Sources */,
 				A868EE5626F254FB002BF67B /* SceneDelegate.swift in Sources */,
