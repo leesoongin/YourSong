@@ -16,9 +16,9 @@ import Alamofire
  곡 제목 -> #popular_chart_frm > div > ul:nth-child(7) > li.popular_chart_tit.clear > span:nth-child(1)
  */
 
-enum AddressCollection: String {
-    case oneToFiftyURL = "https://kysing.kr/popular/?period=w"
-    case fiftyOneToOneHundredURL = "https://kysing.kr/popular/?period=w&range=2"
+enum AddressCollection {
+    static let  oneToFiftyURL = "https://kysing.kr/popular/?period=w"
+    static let  fiftyOneToOneHundredURL = "https://kysing.kr/popular/?period=w&range=2"
 }
 
 class GeumyoungCrawlingManager {
@@ -37,9 +37,9 @@ class GeumyoungCrawlingManager {
         var popularChart: [PopularChartMusic] = [PopularChartMusic]()
         
         if identifier == "oneToFifty" {
-            url = AddressCollection.oneToFiftyURL.rawValue
+            url = AddressCollection.oneToFiftyURL
         }else if identifier == "fiftyOneToOneHundred"{
-            url = AddressCollection.fiftyOneToOneHundredURL.rawValue
+            url = AddressCollection.fiftyOneToOneHundredURL
         }
         
         
