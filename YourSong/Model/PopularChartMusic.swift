@@ -13,6 +13,9 @@ import UIKit
     곡 번호
     제목
     가수
+    작곡가
+    작사가
+    발매일
 */
 
 struct PopularChartMusic {
@@ -22,14 +25,20 @@ struct PopularChartMusic {
     private let number: String?
     private let title: String?
     private let artist: String?
+    private let composer: String? // 작곡가
+    private let lyricist: String? // 작사가
+    private let releaseDate: String? // 발매일
     
-    init(rank: String?, rankUp: String?, rankDown: String?, number: String?, title: String?, artist: String?){
+    init(rank: String?, rankUp: String?, rankDown: String?, number: String?, title: String?, artist: String?, composer: String?, lyricist: String?, releaseDate: String?){
         self.rank = rank
         self.rankUp = rankUp
         self.rankDown = rankDown
         self.number = number
         self.title = title
         self.artist = artist
+        self.composer = composer
+        self.lyricist = lyricist
+        self.releaseDate = releaseDate
     }
     
     // getter
@@ -74,5 +83,26 @@ struct PopularChartMusic {
             return ""
         }
         return artist
+    }
+    func getComposer() -> String{
+        guard let composer = self.composer else {
+            print("getArtist error")
+            return ""
+        }
+        return composer
+    }
+    func getLyricist() -> String{
+        guard let lyricist = self.lyricist else {
+            print("getArtist error")
+            return ""
+        }
+        return lyricist
+    }
+    func getReleaseDate() -> String{
+        guard let releaseDate = self.releaseDate else {
+            print("getArtist error")
+            return ""
+        }
+        return releaseDate
     }
 }

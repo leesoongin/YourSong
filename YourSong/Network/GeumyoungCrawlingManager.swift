@@ -14,6 +14,9 @@ import Alamofire
  순위 변동 -> #popular_chart_frm > div > ul:nth-child(4) > li.popular_chart_chk > label > span.popular_chart_down > img
  곡번호 -> #popular_chart_frm > div > ul:nth-child(7) > li.popular_chart_num
  곡 제목 -> #popular_chart_frm > div > ul:nth-child(7) > li.popular_chart_tit.clear > span:nth-child(1)
+ 작곡가 -> #popular_chart_frm > div > ul:nth-child(2) > li.popular_chart_cmp
+ 작사가 -> #popular_chart_frm > div > ul:nth-child(2) > li.popular_chart_wrt
+ 발매일 -> #popular_chart_frm > div > ul:nth-child(2) > li.popular_chart_rel
  */
 
 /*
@@ -53,6 +56,10 @@ class GeumyoungCrawlingManager {
         var number: String?
         var title: String?
         var artist: String?
+        var composer: String?
+        var lyricist: String?
+        var releaseDate: String?
+       
         var popularChart: [PopularChartMusic] = [PopularChartMusic]()
         
         let url = getUrlFromIdentifier(identifier: identifier)
@@ -77,13 +84,16 @@ class GeumyoungCrawlingManager {
                     rankUp = try element.select("li.popular_chart_chk > label > span.popular_chart_up").text() // 순위 업
                     rankDown = try element.select("li.popular_chart_chk > label > span.popular_chart_down").text() // 순위 다운
                     number = try element.select("li.popular_chart_num").text() // 곡 번호
+                    composer = try element.select("li.popular_chart_cmp").text() // 작곡가
+                    lyricist = try element.select("li.popular_chart_wrt").text() // 작사가
+                    releaseDate = try element.select("li.popular_chart_rel").text() // 발매일
                     
                     for ele in try element.select("li.popular_chart_tit.clear"){
                         title = try ele.select("span")[0].text() // 제목
                         artist = try ele.select("span")[1].text() // 가수
                     }
-                    
-                    popularChart.append(PopularChartMusic(rank: rank, rankUp: rankUp, rankDown: rankDown, number: number, title: title, artist: artist))
+                    popularChart.append(PopularChartMusic(rank: rank, rankUp: rankUp, rankDown: rankDown, number: number, title: title, artist: artist, composer: composer, lyricist: lyricist, releaseDate: releaseDate))
+//                    popularChart.append(PopularChartMusic(rank: rank, rankUp: rankUp, rankDown: rankDown, number: number, title: title, artist: artist))
                 }
                 popularChart.removeFirst() // 맨 앞 요소는 표 정보라서 제외 ㅇㅇ
                 popularChart.removeLast()
