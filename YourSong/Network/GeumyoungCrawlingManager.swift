@@ -16,9 +16,29 @@ import Alamofire
  곡 제목 -> #popular_chart_frm > div > ul:nth-child(7) > li.popular_chart_tit.clear > span:nth-child(1)
  */
 
+/*
+ 1. 발라드 인기곡 1페이지  ->  https://kysing.kr/genre-polular/?genre=01
+ 2. 2페이지 -> https://kysing.kr/genre-polular/?genre=01&range=2
+ //
+ 1. 댄스 인기곡 1페이지 -> https://kysing.kr/genre-polular/?genre=02
+ 2. 2페이지 -> https://kysing.kr/genre-polular/?genre=02&range=2
+ //
+ 1. 힙합 인기곡 1페이지 -> https://kysing.kr/genre-polular/?genre=04
+ 2. 2페이지 -> https://kysing.kr/genre-polular/?genre=04&range=2
+ */
+
+
+
+
 enum AddressCollection {
-    static let  oneToFiftyURL = "https://kysing.kr/popular/?period=w"
-    static let  fiftyOneToOneHundredURL = "https://kysing.kr/popular/?period=w&range=2"
+    static let totalChartsFirst = "https://kysing.kr/popular/?period=w"
+    static let totalChartsSecond = "https://kysing.kr/popular/?period=w&range=2"
+    static let balladeChartsFirst = "https://kysing.kr/genre-polular/?genre=01"
+    static let balladeChartsSecond = "https://kysing.kr/genre-polular/?genre=01&range=2"
+    static let danceChartsFirst = "https://kysing.kr/genre-polular/?genre=02"
+    static let danceChartsSecond = "https://kysing.kr/genre-polular/?genre=02&range=2"
+    static let hiphopChartsFirst = "https://kysing.kr/genre-polular/?genre=04"
+    static let hiphopChartsSecond = "https://kysing.kr/genre-polular/?genre=04&range=2"
 }
 
 class GeumyoungCrawlingManager {
@@ -27,7 +47,6 @@ class GeumyoungCrawlingManager {
     private init() { }
     
     func loadPopularChart(identifier: String, completion: @escaping ([PopularChartMusic])->(Void)){
-        var url: String = ""
         var rank: String?
         var rankUp: String?
         var rankDown: String?
@@ -36,12 +55,7 @@ class GeumyoungCrawlingManager {
         var artist: String?
         var popularChart: [PopularChartMusic] = [PopularChartMusic]()
         
-        if identifier == "oneToFifty" {
-            url = AddressCollection.oneToFiftyURL
-        }else if identifier == "fiftyOneToOneHundred"{
-            url = AddressCollection.fiftyOneToOneHundredURL
-        }
-        
+        let url = getUrlFromIdentifier(identifier: identifier)
         
         AF.request(url).responseString { (response) in
             guard var html = response.value else { return }
@@ -72,6 +86,7 @@ class GeumyoungCrawlingManager {
                     popularChart.append(PopularChartMusic(rank: rank, rankUp: rankUp, rankDown: rankDown, number: number, title: title, artist: artist))
                 }
                 popularChart.removeFirst() // 맨 앞 요소는 표 정보라서 제외 ㅇㅇ
+                popularChart.removeLast()
                 completion(popularChart)
             } catch {
                 print("crawl error")
@@ -79,5 +94,30 @@ class GeumyoungCrawlingManager {
         }// AF
     }// one To fifty
     
+    private func getUrlFromIdentifier(identifier: String) -> String {
+        var url: String = ""
+        
+        switch identifier{
+        case "totalChartsFirst":
+            url = AddressCollection.totalChartsFirst
+        case "totalChartsSecond":
+            url = AddressCollection.totalChartsSecond
+        case "balladeChartsFirst":
+            url = AddressCollection.balladeChartsFirst
+        case "balladeChartsSecond":
+            url = AddressCollection.balladeChartsSecond
+        case "danceChartsFirst":
+            url = AddressCollection.danceChartsFirst
+        case "danceChartsSecond":
+            url = AddressCollection.danceChartsSecond
+        case "hiphopChartsFirst":
+            url = AddressCollection.hiphopChartsFirst
+        case "hiphopChartsSecond":
+            url = AddressCollection.hiphopChartsSecond
+        default:
+            print("잘못된 입력")
+        }
+        return url
+    }
     
 }

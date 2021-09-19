@@ -11,7 +11,8 @@ import Then
 import SnapKit
 import NVActivityIndicatorView
 
-class TotalViewController: UIViewController,IndicatorInfoProvider {
+class TotalViewController: UIViewController,IndicatorInfoProvider, PopularChartDelegate {
+    // UI
     let tableView = UITableView(frame: .zero, style: .plain).then{
         $0.register(PopularChartCell.self,forCellReuseIdentifier: PopularChartCell.identifier)
         $0.rowHeight = 60
@@ -19,26 +20,22 @@ class TotalViewController: UIViewController,IndicatorInfoProvider {
         $0.showsVerticalScrollIndicator = false
     }
     var indicator: NVActivityIndicatorView?
-
     
-    let crawlingManager = GeumyoungCrawlingManager.shared
-    let chartManager = PopularChartManager.shared
+    // manager
+    let crawlingManager: GeumyoungCrawlingManager = GeumyoungCrawlingManager.shared
+    let chartManager: PopularChartManager = PopularChartManager.shared
+    
+    var firstPage: String = "totalChartsFirst"
+    var secondPage: String = "totalChartsSecond"
+    var callCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         config()
         setUI()
         setLayout()
+        loadCharts(identifier: firstPage) //인기차트 첫번째 페이지 불러오기
         
-        guard let indicator = self.indicator else { return }
-        indicator.startAnimating()
-        
-        crawlingManager.loadPopularChart(identifier: "oneToFifty") { response in
-            self.chartManager.extendPopularCharts(charts: response)
-            indicator.stopAnimating()
-            self.tableView.reloadData()
-            
-        }
         print("total viewdidload")
     }
     
@@ -72,8 +69,16 @@ class TotalViewController: UIViewController,IndicatorInfoProvider {
         }
     }
     
-   
-    
+    func loadCharts(identifier: String){
+        guard let indicator = self.indicator else { return }
+        indicator.startAnimating()
+        
+        crawlingManager.loadPopularChart(identifier: identifier) { response in
+            self.chartManager.extendPopularCharts(charts: response)
+            indicator.stopAnimating()
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension TotalViewController: UITableViewDataSource {
@@ -101,3 +106,19 @@ extension TotalViewController: UITableViewDataSource {
 extension TotalViewController: UITableViewDelegate {
     
 }
+
+extension TotalViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.height
+        
+        if offsetY > (contentHeight - height) {
+            callCount += 1
+            if self.chartManager.getTotalPopularCharts().count < 98 && callCount == 1{
+                self.loadCharts(identifier: self.secondPage)
+            }
+        }
+    }
+}
+
