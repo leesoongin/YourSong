@@ -28,6 +28,7 @@
 		A868EE9B26F27435002BF67B /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9A26F27435002BF67B /* Music.swift */; };
 		A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */; };
 		A8D725CB26F724A10010D3D6 /* PopularChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */; };
+		A8D725CF26F78DA60010D3D6 /* PopularMusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */; };
 		E593577EE9CA434740B4B102 /* Pods_YourSong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5E180D60C031C1602138DC /* Pods_YourSong.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		A868EE9A26F27435002BF67B /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartMusic.swift; sourceTree = "<group>"; };
 		A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartDelegate.swift; sourceTree = "<group>"; };
+		A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMusicDetailViewController.swift; sourceTree = "<group>"; };
 		AE5E180D60C031C1602138DC /* Pods_YourSong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourSong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				A854CB2326F60A5500D39D6D /* DanceViewController.swift */,
 				A854CB2626F60A7300D39D6D /* HiphopViewController.swift */,
 				A854CB2926F6156F00D39D6D /* PopularChartCell.swift */,
+				A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */,
 			);
 			path = PopularCharts;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				A868EE9126F25BD2002BF67B /* OwnMusicListViewController.swift in Sources */,
 				A868EE8E26F25BA3002BF67B /* TodayMusicViewController.swift in Sources */,
 				A868EE5626F254FB002BF67B /* SceneDelegate.swift in Sources */,
+				A8D725CF26F78DA60010D3D6 /* PopularMusicDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
