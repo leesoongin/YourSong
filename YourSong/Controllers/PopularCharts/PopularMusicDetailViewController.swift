@@ -11,7 +11,7 @@ import Then
 
 class PopularMusicDetailViewController: UIViewController {
     let backgroundImageView: UIImageView = UIImageView().then{
-        $0.image = UIImage(named: "popularChartBackground")
+        $0.image = UIImage(named: "detailViewBackground")
         $0.contentMode = .scaleAspectFill
     }
     let backgroundView: UIView = UIView().then{
