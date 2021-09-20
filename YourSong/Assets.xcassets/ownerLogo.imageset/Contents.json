@@ -5,27 +5,13 @@
       "scale" : "1x"
     },
     {
-      "filename" : "스크린샷 2021-09-18 오후 11.12.00-5.png",
+      "filename" : "Icon-Small@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "스크린샷 2021-09-18 오후 11.12.00-6.png",
+      "filename" : "Icon-Small@3x.png",
       "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "스크린샷 2021-09-18 오후 11.12.00-3.png",
-      "idiom" : "iphone",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "스크린샷 2021-09-18 오후 11.12.00-4.png",
-      "idiom" : "iphone",
       "scale" : "3x"
     }
   ],
