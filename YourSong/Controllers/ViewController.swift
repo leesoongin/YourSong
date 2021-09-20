@@ -22,20 +22,22 @@ class ViewController: UITabBarController {
     
     private func setUpTabBar(){
         let todayMusicViewController = TodayMusicViewController()
-        todayMusicViewController.tabBarItem.title = "추천"
-//        todayMusicViewController.tabBarItem.image = UIImage(named: "")
+        todayMusicViewController.tabBarItem.image = UIImage(named: "recommentIcon")
+        todayMusicViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
-        
-        let popularChartViewController = PopularChartViewController()
-        popularChartViewController.tabBarItem.title = "인기차트"
+        let popularChartViewController = UIStoryboard.init(name: "PopularChart", bundle: nil).instantiateViewController(withIdentifier: "PopularCharts") as! PopularChartViewController
+        popularChartViewController.tabBarItem.image = UIImage(named: "popularChartIcon")
+        popularChartViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
         let musicSearchViewController = UINavigationController(rootViewController: MusicSearchViewController())
         musicSearchViewController.view.backgroundColor = .darkGray
-        musicSearchViewController.tabBarItem.title = "음악검색"
+        musicSearchViewController.tabBarItem.image = UIImage(named: "searchIcon")
+        musicSearchViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
         let ownMusicListViewController = OwnMusicListViewController()
         ownMusicListViewController.view.backgroundColor = .green
-        ownMusicListViewController.tabBarItem.title = "나만의 리스트"
+        ownMusicListViewController.tabBarItem.image = UIImage(named: "ownListIcon")
+        ownMusicListViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
         
         viewControllers = [todayMusicViewController,

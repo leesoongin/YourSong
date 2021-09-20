@@ -11,4 +11,6 @@ pod 'Then'
 pod 'SwiftSoup'
 pod 'Alamofire', '~> 5.4'
 pod 'RealmSwift'
+pod 'XLPagerTabStrip', '~> 9.0'
+pod 'NVActivityIndicatorView'
 end

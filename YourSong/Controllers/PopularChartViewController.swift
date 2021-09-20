@@ -8,24 +8,39 @@
 import UIKit
 import SnapKit
 import Then
+import XLPagerTabStrip
 
-class PopularChartViewController: UIViewController {
+enum PopularChartIdentifier: String {
+    case first = "oneToFifty"
+    case second = "fiftyOneToOneHundred"
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
-        // Do any additional setup after loading the view.
-    }
+class PopularChartViewController: ButtonBarPagerTabStripViewController {
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        setButtonBarAttribute() // viewDidLoad 보다 반드시 먼저
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
     }
-    */
-
+    
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        let total = TotalViewController()
+        let ballade = BalladeViewController()
+        let dance = DanceViewController()
+        let hiphop = HiphopViewController()
+        
+        return [total,ballade,dance,hiphop]
+    }
+    
+    func setButtonBarAttribute(){
+        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .clear
+        settings.style.buttonBarHeight = 58
+        settings.style.selectedBarBackgroundColor = UIColor(red: 234/255.0, green: 234/255.0, blue: 234/255.0, alpha: 1.0)
+        settings.style.selectedBarBackgroundColor = .black
+        settings.style.buttonBarItemTitleColor = .black
+        settings.style.selectedBarHeight = 3.0
+    }
 }
+
