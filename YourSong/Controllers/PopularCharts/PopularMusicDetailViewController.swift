@@ -10,7 +10,14 @@ import SnapKit
 import Then
 
 class PopularMusicDetailViewController: UIViewController {
-    
+    let backgroundImageView: UIImageView = UIImageView().then{
+        $0.image = UIImage(named: "popularChartBackground")
+        $0.contentMode = .scaleAspectFill
+    }
+    let backgroundView: UIView = UIView().then{
+        $0.backgroundColor = .black
+        $0.alpha = 0.7
+    }
     let topView: UIView = UIView()
     
     let numberLabel: UILabel = UILabel().then{
@@ -89,6 +96,8 @@ class PopularMusicDetailViewController: UIViewController {
     
     func setLayout(){
         let margin: CGFloat = 16
+        self.view.addSubview(backgroundImageView)
+        self.view.addSubview(backgroundView)
         self.view.addSubview(topView)
         self.view.addSubview(bottomView)
         topView.addSubview(numberLabel)
@@ -99,6 +108,14 @@ class PopularMusicDetailViewController: UIViewController {
         bottomStackView.addArrangedSubview(composerLabel)
         bottomStackView.addArrangedSubview(lyricistLabel)
         bottomStackView.addArrangedSubview(releaseDateLabel)
+        
+        backgroundImageView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+        
+        backgroundView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
         
         topView.snp.makeConstraints{
             $0.top.leading.equalTo(self.view.safeAreaLayoutGuide).offset(margin)
