@@ -68,6 +68,11 @@ class PopularMusicDetailViewController: UIViewController {
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.layer.cornerRadius = 10
+        $0.addTarget(self, action: #selector(addToOwnList(_:)), for: .touchUpInside)
+    }
+    
+    @objc func addToOwnList(_ sender: UIButton){
+        print("여기서 나만의 리스트 추가!!")
     }
     
     var selectedMusic: PopularChartMusic?

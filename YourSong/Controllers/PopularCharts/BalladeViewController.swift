@@ -16,7 +16,7 @@ class BalladeViewController: UIViewController,IndicatorInfoProvider,PopularChart
     // UI
     let tableView = UITableView(frame: .zero, style: .plain).then{
         $0.register(PopularChartCell.self,forCellReuseIdentifier: PopularChartCell.identifier)
-        $0.rowHeight = 60
+        $0.rowHeight = 54
         $0.estimatedRowHeight = 150
         $0.showsVerticalScrollIndicator = false
     }
@@ -92,21 +92,25 @@ extension BalladeViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PopularChartCell.identifier) as? PopularChartCell else{
             return UITableViewCell()
         }
-        let number = self.chartManager.getBalladePopularCharts()[indexPath.row].getNumber()
         let rank = self.chartManager.getBalladePopularCharts()[indexPath.row].getRank()
         let rankUp = self.chartManager.getBalladePopularCharts()[indexPath.row].getRankUp()
         let rankDown = self.chartManager.getBalladePopularCharts()[indexPath.row].getRankDown()
         let title = self.chartManager.getBalladePopularCharts()[indexPath.row].getTitle()
         let artist = self.chartManager.getBalladePopularCharts()[indexPath.row].getArtist()
         
-        cell.setBind(number: number, rank: rank, rankUp: rankUp, rankDown: rankDown, title: title, artist: artist)
+        cell.setBind(rank: rank, rankUp: rankUp, rankDown: rankDown, title: title, artist: artist)
         
         return cell
     }
 }
 
 extension BalladeViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = PopularMusicDetailViewController()
+        detailVC.selectedMusic = self.chartManager.getBalladePopularCharts()[indexPath.row]
+            
+        self.present(detailVC, animated: true, completion: nil)
+    }
 }
 
 extension BalladeViewController: UIScrollViewDelegate {
