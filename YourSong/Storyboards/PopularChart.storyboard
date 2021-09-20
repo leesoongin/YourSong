@@ -16,11 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="igF-zz-36A" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kmv-5Y-FnQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번주 노래방 인기곡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGN-vq-ZnS">
+                                        <rect key="frame" x="49" y="21.5" width="148.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="musicalNote" translatesAutoresizingMaskIntoConstraints="NO" id="xjq-eD-rxG">
+                                        <rect key="frame" x="16" y="19.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="CIe-g9-Oi5"/>
+                                            <constraint firstAttribute="width" secondItem="xjq-eD-rxG" secondAttribute="height" id="pLO-Rj-97d"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="7zO-Ru-obx"/>
+                                    <constraint firstItem="xjq-eD-rxG" firstAttribute="leading" secondItem="Kmv-5Y-FnQ" secondAttribute="leading" constant="16" id="2zw-LB-NfD"/>
+                                    <constraint firstItem="xjq-eD-rxG" firstAttribute="centerY" secondItem="Kmv-5Y-FnQ" secondAttribute="centerY" id="3AY-XH-sdN"/>
+                                    <constraint firstItem="BGN-vq-ZnS" firstAttribute="leading" secondItem="xjq-eD-rxG" secondAttribute="trailing" constant="8" id="90h-KJ-aDM"/>
+                                    <constraint firstAttribute="height" constant="64" id="ZEV-ay-67X"/>
+                                    <constraint firstItem="BGN-vq-ZnS" firstAttribute="centerY" secondItem="Kmv-5Y-FnQ" secondAttribute="centerY" id="qgo-mE-kp2"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="igF-zz-36A" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="108" width="414" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7zO-Ru-obx"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WkL-ae-O6P">
                                     <size key="itemSize" width="128" height="128"/>
@@ -31,7 +57,7 @@
                                 <cells/>
                             </collectionView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoI-ct-8xO">
-                                <rect key="frame" x="0.0" y="112" width="414" height="750"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="eKY-iY-Be0"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ioE-i0-Ar1"/>
                             </scrollView>
@@ -41,11 +67,14 @@
                         <constraints>
                             <constraint firstItem="igF-zz-36A" firstAttribute="leading" secondItem="dEJ-ub-mJ0" secondAttribute="leading" id="0fn-AD-6k4"/>
                             <constraint firstItem="yoI-ct-8xO" firstAttribute="leading" secondItem="dEJ-ub-mJ0" secondAttribute="leading" id="6SD-ei-wY9"/>
-                            <constraint firstItem="igF-zz-36A" firstAttribute="top" secondItem="dEJ-ub-mJ0" secondAttribute="top" id="7cG-3d-oWY"/>
+                            <constraint firstItem="dEJ-ub-mJ0" firstAttribute="top" secondItem="Kmv-5Y-FnQ" secondAttribute="top" id="CLw-hs-or4"/>
+                            <constraint firstItem="dEJ-ub-mJ0" firstAttribute="leading" secondItem="Kmv-5Y-FnQ" secondAttribute="leading" id="Qwf-D7-2RF"/>
                             <constraint firstItem="dEJ-ub-mJ0" firstAttribute="bottom" secondItem="yoI-ct-8xO" secondAttribute="bottom" id="RzM-QI-HuI"/>
                             <constraint firstItem="dEJ-ub-mJ0" firstAttribute="trailing" secondItem="igF-zz-36A" secondAttribute="trailing" id="Yfx-lw-JIU"/>
                             <constraint firstItem="yoI-ct-8xO" firstAttribute="top" secondItem="igF-zz-36A" secondAttribute="bottom" id="kbE-BG-BVD"/>
+                            <constraint firstItem="igF-zz-36A" firstAttribute="top" secondItem="Kmv-5Y-FnQ" secondAttribute="bottom" id="ot6-0c-YMS"/>
                             <constraint firstItem="dEJ-ub-mJ0" firstAttribute="trailing" secondItem="yoI-ct-8xO" secondAttribute="trailing" id="xCX-ly-cJY"/>
+                            <constraint firstItem="dEJ-ub-mJ0" firstAttribute="trailing" secondItem="Kmv-5Y-FnQ" secondAttribute="trailing" id="zMl-am-8Dp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -59,6 +88,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="musicalNote" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
