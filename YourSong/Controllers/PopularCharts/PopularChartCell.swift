@@ -21,7 +21,7 @@ class PopularChartCell: UITableViewCell {
         $0.textAlignment = .center
     }
     private let ownerImage = UIImageView().then{
-        $0.image = UIImage(named: "ownerLogo")
+        $0.image = UIImage(named: "musicLogo")
         $0.contentMode = .scaleAspectFill
         $0.backgroundColor = .gray
         $0.layer.cornerRadius = 15
