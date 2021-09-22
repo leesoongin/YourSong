@@ -9,14 +9,14 @@ import UIKit
 
 struct MusicSearchResults {
     private var pageCount: Int
-    private var document: [SearchedMusic]
+    private var document: [PopularChartMusic]
     
     init(){
         self.pageCount = 0
-        self.document = [SearchedMusic]()
+        self.document = [PopularChartMusic]()
     }
     
-    init(pageCount: Int, document: [SearchedMusic]){
+    init(pageCount: Int, document: [PopularChartMusic]){
         self.pageCount = pageCount
         self.document = document
     }
@@ -25,10 +25,10 @@ struct MusicSearchResults {
         self.document.removeFirst()
         self.document.removeLast()
     }
-    mutating func addSearchMusic(searchedMusic: SearchedMusic){
+    mutating func addSearchMusic(searchedMusic: PopularChartMusic){
         self.document.append(searchedMusic)
     }
-    mutating func addResults(results: [SearchedMusic]){
+    mutating func addResults(results: [PopularChartMusic]){
         self.document.append(contentsOf: results)
     }
     
@@ -36,7 +36,7 @@ struct MusicSearchResults {
     func getPageCount() -> Int{
         return self.pageCount
     }
-    func getDocument() -> [SearchedMusic]{
+    func getDocument() -> [PopularChartMusic]{
         return self.document
     }
     

@@ -144,7 +144,7 @@ class GeumyoungCrawlingManager {
                         artist = try ele.select("span")[1].text() // 가수
                     }// inner for
                     
-                    musicSearchedResults.addSearchMusic(searchedMusic: SearchedMusic(number: number, title: title, artist: artist, composer: composer, lyricist: lyricist, releaseDate: releaseDate))
+                    musicSearchedResults.addSearchMusic(searchedMusic: PopularChartMusic(rank: "", rankUp: "", rankDown: "", number: number, title: title, artist: artist, composer: composer, lyricist: lyricist, releaseDate: releaseDate))
                 }// for
                 musicSearchedResults.setPageCount(pageCountElements.count)
                 

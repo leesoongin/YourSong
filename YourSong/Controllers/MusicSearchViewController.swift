@@ -101,7 +101,12 @@ extension MusicSearchViewController: UITableViewDataSource{
 }
 
 extension MusicSearchViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = PopularMusicDetailViewController()
+        detailVC.selectedMusic = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row]
+            
+        self.present(detailVC, animated: true, completion: nil)
+    }
 }
 
 
