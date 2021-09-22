@@ -41,6 +41,16 @@ class MusicSearchViewController: UIViewController {
         setLayout()
     }
     
+    func failMusicSearch(){
+        let alert = UIAlertController(title: "알림", message: "해당하는 음원이 존재하지 않습니다.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "넹 ㅠㅠ", style: .default) { (ok) in
+           print("그래 그래~")
+        }
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func config(){
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -118,8 +128,16 @@ extension MusicSearchViewController: UISearchBarDelegate {
         crawlingManager.loadSearchedMusic(category: category, keyword: keyword) { response in
             self.musicSearchManager.updateMusicSearchResults(response)
             indicator.stopAnimating()
+            
+            // 예외처리
+            if self.musicSearchManager.getMusicSearchResults().getDocument().count == 0{
+                self.failMusicSearch()
+            }
             self.tableView.reloadData()
         }
+        
+        
+       
     }
 }
 
