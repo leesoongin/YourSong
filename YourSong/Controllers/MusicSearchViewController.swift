@@ -94,6 +94,8 @@ extension MusicSearchViewController: UITableViewDelegate {
     
 }
 
+
+
 extension MusicSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         // 1. TODO: 여기서 검색 카테고리 설정하자
@@ -103,18 +105,48 @@ extension MusicSearchViewController: UISearchBarDelegate {
     // Search Request
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let indicator = self.indicator else { return }
-        indicator.startAnimating()
-        
         let category = musicSearchManager.getCategory() // 현재 선택되어 있는 카테고리  - Default 는 0
         guard let keyword = searchBar.text else {
             print("searchBar text is nil")
             return
         }
+        // 검색할때마다 현재 검색어, 현재 페이지 세팅
+        self.musicSearchManager.updateCurrentSearchTerm(keyword)
+        self.musicSearchManager.resetCurrentPage()
         
+        indicator.startAnimating()
         crawlingManager.loadSearchedMusic(category: category, keyword: keyword) { response in
             self.musicSearchManager.updateMusicSearchResults(response)
             indicator.stopAnimating()
             self.tableView.reloadData()
+        }
+    }
+}
+
+extension MusicSearchViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.height
+        
+        guard let indicator = self.indicator else { return }
+        let category = musicSearchManager.getCategory()
+        let keyword = musicSearchManager.getCurrentSearchTerm()
+        
+        // 스크롤이  collectionView Offset의 끝에 가게 되면 다음 페이지를 호출
+        if offsetY > (contentHeight - height) {
+            if musicSearchManager.getMusicSearchResults().getPageCount() > self.musicSearchManager.getCurrentPage() {
+                self.musicSearchManager.turnThePage() // 1페이지 추가
+                indicator.startAnimating()
+                print("현재 나오는 페이지는 --> \(self.musicSearchManager.getCurrentPage())")
+                self.crawlingManager.loadNextPageOfSearchedMusic(category: category, keyword: keyword, page: self.musicSearchManager.getCurrentPage()) { response in
+                    self.musicSearchManager.addMusicSearchResults(response)
+                    self.tableView.reloadData()
+                    indicator.stopAnimating()
+                }
+                print("나와라 챔걔!!!")
+            }
+            
         }
     }
 }

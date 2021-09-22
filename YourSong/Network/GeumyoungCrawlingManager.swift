@@ -67,7 +67,7 @@ enum MusicSearchAddresses {
     static let titleSearch = "https://kysing.kr/search/?category=2&keyword="
     static let artistSearch = "https://kysing.kr/search/?category=7&keyword="
 }
-
+//https://kysing.kr/search/?category=7&keyword=%EC%9C%A4%EB%94%B4%EB%94%B4&s_page=2
 class GeumyoungCrawlingManager {
     static let shared = GeumyoungCrawlingManager()
     
@@ -87,12 +87,24 @@ class GeumyoungCrawlingManager {
         
         url = getSearchUrl(category: category, keyword: keyword)
        
-        requestTitleSearch(category: category, url: url){ response in
+        requestMusicSearchResult(category: category, url: url){ response in
             completion(response)
         }
     }
     
-    private func requestTitleSearch(category: Int, url: String, completion: @escaping (MusicSearchResults)->(Void)){
+    func loadNextPageOfSearchedMusic(category: Int, keyword: String, page: Int, completion: @escaping (MusicSearchResults)->(Void)){
+        var url: String = ""
+        
+        // 여기서 url 만들어오고,
+        url = getNextPageUrl(url: getSearchUrl(category: category, keyword: keyword), page: page)
+        
+        requestMusicSearchResult(category: category, url: url){ response in
+            completion(response)
+        }
+        
+    }
+    
+    private func requestMusicSearchResult(category: Int, url: String, completion: @escaping (MusicSearchResults)->(Void)){
         var number: String = ""
         var title: String = ""
         var artist: String = ""
@@ -132,7 +144,7 @@ class GeumyoungCrawlingManager {
                         artist = try ele.select("span")[1].text() // 가수
                     }// inner for
                     
-                    musicSearchedResults.addDocument(searchedMusic: SearchedMusic(number: number, title: title, artist: artist, composer: composer, lyricist: lyricist, releaseDate: releaseDate))
+                    musicSearchedResults.addSearchMusic(searchedMusic: SearchedMusic(number: number, title: title, artist: artist, composer: composer, lyricist: lyricist, releaseDate: releaseDate))
                 }// for
                 musicSearchedResults.setPageCount(pageCountElements.count)
                 
@@ -240,5 +252,9 @@ class GeumyoungCrawlingManager {
         let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         return encodedString
+    }
+    
+    private func getNextPageUrl(url: String, page: Int) -> String{
+        return "\(url)&s_page=\(page)"
     }
 }

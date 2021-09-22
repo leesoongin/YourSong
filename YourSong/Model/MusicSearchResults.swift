@@ -25,6 +25,12 @@ struct MusicSearchResults {
         self.document.removeFirst()
         self.document.removeLast()
     }
+    mutating func addSearchMusic(searchedMusic: SearchedMusic){
+        self.document.append(searchedMusic)
+    }
+    mutating func addResults(results: [SearchedMusic]){
+        self.document.append(contentsOf: results)
+    }
     
     //getter
     func getPageCount() -> Int{
