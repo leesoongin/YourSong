@@ -136,6 +136,10 @@ class GeumyoungCrawlingManager {
                 }// for
                 musicSearchedResults.setPageCount(pageCountElements.count)
                 
+                if musicSearchedResults.getDocument().count != 0 { // 검색 결과 없다면 안해도됨
+                    musicSearchedResults.removeFirstAndLast()
+                }
+                
                 completion(musicSearchedResults)
             } catch {
                 print("crawl error")

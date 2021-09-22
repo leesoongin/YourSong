@@ -11,16 +11,19 @@ struct MusicSearchResults {
     private var pageCount: Int
     private var document: [SearchedMusic]
     
+    init(){
+        self.pageCount = 0
+        self.document = [SearchedMusic]()
+    }
+    
     init(pageCount: Int, document: [SearchedMusic]){
         self.pageCount = pageCount
         self.document = document
     }
     
-    mutating func addDocument(searchedMusic: SearchedMusic){
-        self.document.append(searchedMusic)
-    }
-    mutating func clear(){
-        self.document.removeAll()
+    mutating func removeFirstAndLast(){
+        self.document.removeFirst()
+        self.document.removeLast()
     }
     
     //getter
@@ -39,4 +42,5 @@ struct MusicSearchResults {
             self.pageCount = 0
         }
     }
+  
 }
