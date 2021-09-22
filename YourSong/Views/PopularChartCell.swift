@@ -88,7 +88,7 @@ class PopularChartCell: UITableViewCell {
         }
         
         ownerImage.snp.makeConstraints{
-            $0.width.height.equalTo(size)
+            $0.width.height.equalTo(40)
             $0.leading.equalTo(rankText.snp.trailing).offset(margin)
             $0.centerY.equalTo(self.contentView.safeAreaLayoutGuide)
         }

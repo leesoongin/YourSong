@@ -63,7 +63,7 @@ class SearchChartCell: UITableViewCell {
     
     private func setLayout(){
         let margin: CGFloat = 8
-        let size: CGFloat = 20
+        let size: CGFloat = 40
         
         self.contentView.addSubview(numberText)
         self.contentView.addSubview(ownerImage)
@@ -74,6 +74,7 @@ class SearchChartCell: UITableViewCell {
         numberText.snp.makeConstraints{
             $0.leading.equalTo(self.contentView).offset(margin)
             $0.centerY.equalTo(self.contentView.safeAreaLayoutGuide)
+            $0.width.equalTo(size)
         }
         
         ownerImage.snp.makeConstraints{
