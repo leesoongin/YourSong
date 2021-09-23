@@ -106,8 +106,8 @@ extension TotalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.chartManager.getTotalPopularCharts()[indexPath.row]
-            
-        self.present(detailVC, animated: true, completion: nil)
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

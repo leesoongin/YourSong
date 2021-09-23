@@ -22,6 +22,16 @@ class PopularChartViewController: ButtonBarPagerTabStripViewController {
         setButtonBarAttribute() // viewDidLoad 보다 반드시 먼저
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        
+        setNavigationItem()
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.title = "이번주 노래방 인기차트"
+        self.navigationItem.hidesSearchBarWhenScrolling = true //스크롤할때 searchbar 안숨기기
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem?.tintColor = .black
+        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
