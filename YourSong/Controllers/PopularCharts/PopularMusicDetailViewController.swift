@@ -10,9 +10,9 @@ import SnapKit
 import Then
 
 class PopularMusicDetailViewController: UIViewController {
-    let backgroundImageView: UIImageView = UIImageView().then{
+    var backgroundImageView: UIImageView = UIImageView().then{
         $0.image = UIImage(named: "detailViewBackground")
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .scaleAspectFit
     }
     let backgroundView: UIView = UIView().then{
         $0.backgroundColor = .black
@@ -85,11 +85,15 @@ class PopularMusicDetailViewController: UIViewController {
             print("selectedMusic is nil")
             return
         }
-
-        bind(music: selectedMusic)
+        
         setLayout()
+        bind(music: selectedMusic)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
     
+        
+    }
     func bind(music: PopularChartMusic){
         numberLabel.text = "KY \(music.getNumber())"
         titleLabel.text = music.getTitle()
@@ -115,11 +119,11 @@ class PopularMusicDetailViewController: UIViewController {
         bottomStackView.addArrangedSubview(releaseDateLabel)
         
         backgroundImageView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.top.leading.trailing.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
         backgroundView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.top.leading.trailing.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
         topView.snp.makeConstraints{

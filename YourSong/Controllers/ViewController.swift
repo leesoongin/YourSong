@@ -30,7 +30,6 @@ class ViewController: UITabBarController {
         popularChartViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
         let musicSearchViewController = UINavigationController(rootViewController: MusicSearchViewController())
-        musicSearchViewController.view.backgroundColor = .darkGray
         musicSearchViewController.tabBarItem.image = UIImage(named: "searchIcon")
         musicSearchViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
