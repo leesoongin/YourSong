@@ -106,7 +106,7 @@ extension HiphopViewController: UITableViewDelegate {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.chartManager.getHiphopPopularCharts()[indexPath.row]
             
-        self.present(detailVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

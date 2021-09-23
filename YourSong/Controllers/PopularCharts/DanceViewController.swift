@@ -107,7 +107,7 @@ extension DanceViewController: UITableViewDelegate {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.chartManager.getDancePopularCharts()[indexPath.row]
             
-        self.present(detailVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

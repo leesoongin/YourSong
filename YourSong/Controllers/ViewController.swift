@@ -25,9 +25,12 @@ class ViewController: UITabBarController {
         todayMusicViewController.tabBarItem.image = UIImage(named: "recommentIcon")
         todayMusicViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
+        
         let popularChartViewController = UIStoryboard.init(name: "PopularChart", bundle: nil).instantiateViewController(withIdentifier: "PopularCharts") as! PopularChartViewController
+        let popularChartViewControllerInNavigation = UINavigationController(rootViewController: popularChartViewController)
         popularChartViewController.tabBarItem.image = UIImage(named: "popularChartIcon")
         popularChartViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
+        
         
         let musicSearchViewController = UINavigationController(rootViewController: MusicSearchViewController())
         musicSearchViewController.tabBarItem.image = UIImage(named: "searchIcon")
@@ -40,7 +43,7 @@ class ViewController: UITabBarController {
         
         
         viewControllers = [todayMusicViewController,
-                           popularChartViewController,
+                           popularChartViewControllerInNavigation,
                            musicSearchViewController,
                            ownMusicListViewController]
     }

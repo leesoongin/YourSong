@@ -109,7 +109,7 @@ extension BalladeViewController: UITableViewDelegate {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.chartManager.getBalladePopularCharts()[indexPath.row]
             
-        self.present(detailVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
