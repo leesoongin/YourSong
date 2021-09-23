@@ -76,6 +76,9 @@ class MusicSearchViewController: UIViewController {
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "음악 검색"
         self.navigationItem.hidesSearchBarWhenScrolling = true //스크롤할때 searchbar 안숨기기
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem?.tintColor = .black
+        self.navigationController?.navigationBar.barTintColor = .white
     }
 }
 
@@ -104,8 +107,8 @@ extension MusicSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row]
-            
-        self.present(detailVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(detailVC, animated: true)
+//        self.present(detailVC, animated: true, completion: nil)
     }
 }
 
