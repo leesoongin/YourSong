@@ -108,7 +108,8 @@ extension BalladeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.chartManager.getBalladePopularCharts()[indexPath.row]
-            
+        
+        detailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

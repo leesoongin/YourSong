@@ -105,7 +105,8 @@ extension HiphopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.chartManager.getHiphopPopularCharts()[indexPath.row]
-            
+        
+        detailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

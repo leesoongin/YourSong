@@ -107,6 +107,7 @@ extension TotalViewController: UITableViewDelegate {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.chartManager.getTotalPopularCharts()[indexPath.row]
         
+        detailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

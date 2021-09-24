@@ -107,6 +107,8 @@ extension MusicSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = PopularMusicDetailViewController()
         detailVC.selectedMusic = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row]
+        
+        detailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailVC, animated: true)
 //        self.present(detailVC, animated: true, completion: nil)
     }
