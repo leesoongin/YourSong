@@ -99,12 +99,13 @@ class FirstInputViewController: UIViewController {
     }
     
     let nextButton = UIButton().then{
-        $0.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        $0.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         $0.setTitle("다음", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(next(_:)), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     @objc func buttonPressed(_ sender: UIButton){
@@ -123,6 +124,8 @@ class FirstInputViewController: UIViewController {
         }else{
             sender.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
+        
+        checkCondition()
     }
     
     @objc func next(_ sender: UIButton){
@@ -145,6 +148,20 @@ class FirstInputViewController: UIViewController {
         setNavigationItem()
         setLayout()
         setButtonGroup()
+    }
+    
+    func checkCondition(){
+        for button in buttons{
+            if button.isSelected == true{
+                self.nextButton.isEnabled = true
+                self.nextButton.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                return
+            }
+        }
+        self.nextButton.isEnabled = false
+        self.nextButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        
+        print("정보를 입력해주세요!")
     }
     
     func setButtonGroup(){

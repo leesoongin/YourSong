@@ -246,12 +246,13 @@ class SecondInputViewController: UIViewController {
     }
     
     let nextButton = UIButton().then{
-        $0.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        $0.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         $0.setTitle("다음", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(next(_:)), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     @objc func next(_ sender: UIButton){
@@ -263,6 +264,7 @@ class SecondInputViewController: UIViewController {
     
     @objc func genderButtonPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
+        isCondition[0] = !isCondition[0]
         
         if sender.isSelected {
             sender.layer.borderColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
@@ -276,9 +278,11 @@ class SecondInputViewController: UIViewController {
         }else{
             sender.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
+        checkCondition()
     }
     @objc func toneButtonPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
+        isCondition[1] = !isCondition[1]
         
         if sender.isSelected {
             sender.layer.borderColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
@@ -292,9 +296,11 @@ class SecondInputViewController: UIViewController {
         }else{
             sender.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
+        checkCondition()
     }
     @objc func beatButtonPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
+        isCondition[2] = !isCondition[2]
         
         if sender.isSelected {
             sender.layer.borderColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
@@ -308,12 +314,14 @@ class SecondInputViewController: UIViewController {
         }else{
             sender.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
+        checkCondition()
     }
     
     var selectedMusic: PopularChartMusic?
     var genderButtons: [UIButton] = [UIButton]()
     var toneButtons: [UIButton] = [UIButton]()
     var beatButtons: [UIButton] = [UIButton]()
+    var isCondition: [Bool] = [false,false,false]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -324,6 +332,20 @@ class SecondInputViewController: UIViewController {
         setGenderButtons()
         setToneButtons()
         setBeatButtons()
+    }
+    
+    func checkCondition(){
+        for condi in isCondition{
+            if condi == false {
+                self.nextButton.isEnabled = false
+                self.nextButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                return
+            }
+        }
+        self.nextButton.isEnabled = true
+        self.nextButton.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        
+        print("정보를 입력해주세요!")
     }
     
     func setNavigationItem(){

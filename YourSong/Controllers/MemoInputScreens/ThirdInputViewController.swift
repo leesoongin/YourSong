@@ -40,12 +40,13 @@ class ThirdInputViewController: UIViewController {
     }
     
     let completeButton = UIButton().then{
-        $0.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        $0.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(registOwnMusicList(_:)), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     @objc func registOwnMusicList(_ sender: UIButton){
@@ -107,6 +108,7 @@ class ThirdInputViewController: UIViewController {
 
 extension ThirdInputViewController: PickerDataSendDelegate {
     func sendData(data: String) {
+        self.completeButton.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         self.pickerViewButton.setTitle("\(data)", for: .normal)
     }
 }
