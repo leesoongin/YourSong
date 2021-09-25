@@ -26,6 +26,11 @@ class PopularChartViewController: ButtonBarPagerTabStripViewController {
         setNavigationItem()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setNavigationItem()
+    }
+    
     func setNavigationItem(){
         self.navigationItem.title = "이번주 노래방 인기차트"
         self.navigationItem.hidesSearchBarWhenScrolling = true //스크롤할때 searchbar 안숨기기

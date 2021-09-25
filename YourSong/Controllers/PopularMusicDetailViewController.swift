@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 class PopularMusicDetailViewController: UIViewController {
+
+    
     var backgroundImageView: UIImageView = UIImageView().then{
         $0.image = UIImage(named: "detailViewBackground")
         $0.contentMode = .scaleAspectFit
@@ -71,8 +73,18 @@ class PopularMusicDetailViewController: UIViewController {
         $0.addTarget(self, action: #selector(addToOwnList(_:)), for: .touchUpInside)
     }
     
+    @objc func close(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func addToOwnList(_ sender: UIButton){
-        print("여기서 나만의 리스트 추가!!")
+        let firstInputViewController = FirstInputViewController()
+        let containerVC = UINavigationController(rootViewController: firstInputViewController)
+        
+        containerVC.modalPresentationStyle = .fullScreen
+        firstInputViewController.selectedMusic = self.selectedMusic
+        
+        self.present(containerVC, animated: true, completion: nil)
     }
     
     var selectedMusic: PopularChartMusic?
@@ -87,6 +99,7 @@ class PopularMusicDetailViewController: UIViewController {
         }
         
         setLayout()
+        setNavigationItem()
         bind(music: selectedMusic)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -103,8 +116,20 @@ class PopularMusicDetailViewController: UIViewController {
         releaseDateLabel.text = "발매일: \(music.getReleaseDate())"
     }
     
+    func setNavigationItem(){
+        let leftBarButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(close(_:))).then{
+            $0.image = UIImage(systemName: "chevron.backward")
+            $0.tintColor = .white
+        }
+        
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
     func setLayout(){
         let margin: CGFloat = 16
+        
         self.view.addSubview(backgroundImageView)
         self.view.addSubview(backgroundView)
         self.view.addSubview(topView)
@@ -126,6 +151,8 @@ class PopularMusicDetailViewController: UIViewController {
             $0.top.leading.trailing.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
+       
+        
         topView.snp.makeConstraints{
             $0.top.leading.equalTo(self.view.safeAreaLayoutGuide).offset(margin)
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(margin)
@@ -133,7 +160,7 @@ class PopularMusicDetailViewController: UIViewController {
         }
         
         numberLabel.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(50)
+            $0.top.equalToSuperview().offset(60)
             $0.leading.equalToSuperview().offset(margin)
             $0.trailing.equalToSuperview()
         }
