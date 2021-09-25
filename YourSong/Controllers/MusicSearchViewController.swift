@@ -55,6 +55,24 @@ class MusicSearchViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func checkAlert(musicData: PopularChartMusic){
+        let alert = UIAlertController(title: "나만의 리스트", message: "해당 음원을 추가하실건가요?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "넹 !", style: .default) { (ok) in
+            let firstInputViewController = FirstInputViewController()
+            let containerVC = UINavigationController(rootViewController: firstInputViewController)
+            
+            containerVC.modalPresentationStyle = .fullScreen
+            firstInputViewController.selectedMusic = musicData
+            
+            self.present(containerVC, animated: true, completion: nil)
+        }
+        let cancel = UIAlertAction(title: "아뇨 !", style: .cancel)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func config(){
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -95,12 +113,9 @@ extension MusicSearchViewController: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchChartCell.identifier) as? SearchChartCell else {
             return UITableViewCell()
         }
-        let number = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row].getNumber()
-        let title = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row].getTitle()
-        let artist = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row].getArtist()
 
-        cell.setBind(number: number, title: title, artist: artist)
-        
+        cell.setBind(musicData: self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row])
+        cell.popularChartCellDelegate = self
         return cell
     }
     
@@ -176,5 +191,11 @@ extension MusicSearchViewController: UIScrollViewDelegate {
             }
             
         }
+    }
+}
+
+extension MusicSearchViewController: PopularChartCellDelegate {
+    func moveToDetail(musicData: PopularChartMusic) {
+        checkAlert(musicData: musicData)
     }
 }

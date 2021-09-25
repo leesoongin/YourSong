@@ -78,6 +78,24 @@ class HiphopViewController: UIViewController,IndicatorInfoProvider,PopularChartD
             self.tableView.reloadData()
         }
     }
+    
+    func checkAlert(musicData: PopularChartMusic){
+        let alert = UIAlertController(title: "나만의 리스트", message: "해당 음원을 추가하실건가요?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "넹 !", style: .default) { (ok) in
+            let firstInputViewController = FirstInputViewController()
+            let containerVC = UINavigationController(rootViewController: firstInputViewController)
+            
+            containerVC.modalPresentationStyle = .fullScreen
+            firstInputViewController.selectedMusic = musicData
+            
+            self.present(containerVC, animated: true, completion: nil)
+        }
+        let cancel = UIAlertAction(title: "아뇨 !", style: .cancel)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension HiphopViewController: UITableViewDataSource {
@@ -89,13 +107,8 @@ extension HiphopViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PopularChartCell.identifier) as? PopularChartCell else{
             return UITableViewCell()
         }
-        let rank = self.chartManager.getHiphopPopularCharts()[indexPath.row].getRank()
-        let rankUp = self.chartManager.getHiphopPopularCharts()[indexPath.row].getRankUp()
-        let rankDown = self.chartManager.getHiphopPopularCharts()[indexPath.row].getRankDown()
-        let title = self.chartManager.getHiphopPopularCharts()[indexPath.row].getTitle()
-        let artist = self.chartManager.getHiphopPopularCharts()[indexPath.row].getArtist()
-        
-        cell.setBind(rank: rank, rankUp: rankUp, rankDown: rankDown, title: title, artist: artist)
+        cell.setBind(musicData: self.chartManager.getHiphopPopularCharts()[indexPath.row])
+        cell.popularChartCellDelegate = self
         
         return cell
     }
@@ -124,5 +137,11 @@ extension HiphopViewController: UIScrollViewDelegate {
                 loadCharts(identifier: secondPage)
             }
         }
+    }
+}
+
+extension HiphopViewController: PopularChartCellDelegate {
+    func moveToDetail(musicData: PopularChartMusic) {
+        checkAlert(musicData: musicData)
     }
 }

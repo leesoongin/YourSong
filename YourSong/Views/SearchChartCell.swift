@@ -9,6 +9,8 @@ import UIKit
 
 class SearchChartCell: UITableViewCell {
     static let identifier: String = "SearchChartCell"
+    var popularChartCellDelegate: PopularChartCellDelegate?
+    private var musicData: PopularChartMusic?
     
     private let numberText = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 11)
@@ -38,7 +40,11 @@ class SearchChartCell: UITableViewCell {
     }
     
     @objc func addToOwnList(_ sender: UIButton){
-        print("여기서 나만의 리스트 추가하자!")
+        guard let musicData = self.musicData else {
+            print("musicData is nil")
+            return
+        }
+        popularChartCellDelegate?.moveToDetail(musicData: musicData)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -101,9 +107,11 @@ class SearchChartCell: UITableViewCell {
         }
     }
     
-    func setBind(number: String, title: String, artist: String){
-        self.numberText.text = number
-        self.titleText.text = title
-        self.artistText.text = artist
+    func setBind(musicData: PopularChartMusic){
+        self.musicData = musicData
+        
+        self.numberText.text = musicData.getNumber()
+        self.titleText.text = musicData.getTitle()
+        self.artistText.text = musicData.getArtist()
     }
 }

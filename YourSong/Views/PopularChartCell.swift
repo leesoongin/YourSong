@@ -9,8 +9,12 @@ import UIKit
 import SnapKit
 import Then
 
+
+
 class PopularChartCell: UITableViewCell {
     static let identifier: String = "popularChartCell"
+    var popularChartCellDelegate: PopularChartCellDelegate?
+    private var musicData: PopularChartMusic?
     
     private let rankText = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 14)
@@ -45,8 +49,13 @@ class PopularChartCell: UITableViewCell {
     }
     
     @objc func addToOwnList(_ sender: UIButton){
-        print("여기서 나만의 리스트 추가하자!")
+        guard let musicData = self.musicData else {
+            print("musicData is nil")
+            return
+        }
+        self.popularChartCellDelegate?.moveToDetail(musicData: musicData)
     }
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -111,20 +120,22 @@ class PopularChartCell: UITableViewCell {
         }
     }
     
-    func setBind(rank: String, rankUp: String, rankDown: String, title: String, artist: String){
-        self.rankText.text = rank
-        self.titleText.text = title
-        self.artistText.text = artist
+    func setBind(musicData: PopularChartMusic){
+        self.musicData = musicData
         
-        if rankUp == "" && rankDown == ""{
+        self.rankText.text = musicData.getRank()
+        self.titleText.text = musicData.getTitle()
+        self.artistText.text = musicData.getArtist()
+        
+        if musicData.getRankUp() == "" && musicData.getRankDown() == ""{
             self.rankUpOrDownText .textColor = .black
             self.rankUpOrDownText .text = "-"
-        }else if rankUp != "" {
+        }else if musicData.getRankUp() != "" {
             self.rankUpOrDownText .textColor = .systemRed
-            self.rankUpOrDownText.text = rankUp
+            self.rankUpOrDownText.text = musicData.getRankUp()
         }else{
             self.rankUpOrDownText .textColor = .systemBlue
-            self.rankUpOrDownText.text = rankDown
+            self.rankUpOrDownText.text = musicData.getRankDown()
         }
     }
 }
