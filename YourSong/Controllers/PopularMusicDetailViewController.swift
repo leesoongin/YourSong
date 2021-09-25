@@ -102,11 +102,7 @@ class PopularMusicDetailViewController: UIViewController {
         setNavigationItem()
         bind(music: selectedMusic)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    
-        
-    }
+
     func bind(music: PopularChartMusic){
         numberLabel.text = "KY \(music.getNumber())"
         titleLabel.text = music.getTitle()
