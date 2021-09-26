@@ -29,7 +29,7 @@
 		A868EE8E26F25BA3002BF67B /* TodayMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */; };
 		A868EE9126F25BD2002BF67B /* OwnMusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9026F25BD2002BF67B /* OwnMusicListViewController.swift */; };
 		A868EE9626F2650A002BF67B /* GeumyoungCrawlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */; };
-		A868EE9B26F27435002BF67B /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9A26F27435002BF67B /* Music.swift */; };
+		A868EE9B26F27435002BF67B /* OwnMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9A26F27435002BF67B /* OwnMusic.swift */; };
 		A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */; };
 		A8D725CB26F724A10010D3D6 /* PopularChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */; };
 		A8D725CF26F78DA60010D3D6 /* PopularMusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */; };
@@ -68,7 +68,7 @@
 		A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMusicViewController.swift; sourceTree = "<group>"; };
 		A868EE9026F25BD2002BF67B /* OwnMusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusicListViewController.swift; sourceTree = "<group>"; };
 		A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeumyoungCrawlingManager.swift; sourceTree = "<group>"; };
-		A868EE9A26F27435002BF67B /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		A868EE9A26F27435002BF67B /* OwnMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusic.swift; sourceTree = "<group>"; };
 		A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartMusic.swift; sourceTree = "<group>"; };
 		A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartDelegate.swift; sourceTree = "<group>"; };
 		A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMusicDetailViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		A868EE9926F272B4002BF67B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A868EE9A26F27435002BF67B /* Music.swift */,
+				A868EE9A26F27435002BF67B /* OwnMusic.swift */,
 				A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */,
 				A8EBD6BE26FB413B00CF1EC9 /* SearchedMusic.swift */,
 				A8EBD6C526FB41AD00CF1EC9 /* MusicSearchResults.swift */,
@@ -366,7 +366,7 @@
 				A868EE8826F25B00002BF67B /* PopularChartViewController.swift in Sources */,
 				A854CB2126F60A3500D39D6D /* BalladeViewController.swift in Sources */,
 				A8D725CB26F724A10010D3D6 /* PopularChartDelegate.swift in Sources */,
-				A868EE9B26F27435002BF67B /* Music.swift in Sources */,
+				A868EE9B26F27435002BF67B /* OwnMusic.swift in Sources */,
 				A854CB2A26F6156F00D39D6D /* PopularChartCell.swift in Sources */,
 				A814710726FE29B50038CCCF /* PickerViewController.swift in Sources */,
 				A8EBD6BF26FB413B00CF1EC9 /* SearchedMusic.swift in Sources */,

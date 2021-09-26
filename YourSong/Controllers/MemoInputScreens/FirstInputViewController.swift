@@ -110,6 +110,7 @@ class FirstInputViewController: UIViewController {
     
     @objc func buttonPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
+        updateGenreDataFromButtonTitle(sender)
         
         if sender.isSelected {
             sender.layer.borderColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
@@ -130,7 +131,8 @@ class FirstInputViewController: UIViewController {
     
     @objc func next(_ sender: UIButton){
         let secondInputVC = SecondInputViewController()
-        secondInputVC.selectedMusic = self.selectedMusic
+        secondInputVC.ownMusic = OwnMusic(musicData: self.selectedMusic!, genre: self.genreData)
+        
         self.navigationController?.pushViewController(secondInputVC, animated: true)
     }
     
@@ -139,6 +141,8 @@ class FirstInputViewController: UIViewController {
     }
     
     var selectedMusic: PopularChartMusic?
+    var ownMusic: OwnMusic?
+    var genreData: String = ""
     var buttons: [UIButton] = [UIButton]()
         
     override func viewDidLoad() {
@@ -162,6 +166,12 @@ class FirstInputViewController: UIViewController {
         self.nextButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         
         print("정보를 입력해주세요!")
+    }
+    
+    func updateGenreDataFromButtonTitle(_ sender: UIButton){
+        if let genreData = sender.titleLabel?.text{
+            self.genreData = genreData
+        }
     }
     
     func setButtonGroup(){

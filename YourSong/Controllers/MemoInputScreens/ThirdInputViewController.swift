@@ -50,7 +50,8 @@ class ThirdInputViewController: UIViewController {
     }
     
     @objc func registOwnMusicList(_ sender: UIButton){
-        print("저장 완료!")
+        updateMemoData()
+        print("result -> \(ownMusic?.getMusicData())")
     }
     
     @objc func moveToPickerView(_ sender: UIButton){
@@ -60,13 +61,17 @@ class ThirdInputViewController: UIViewController {
         self.present(pickerVC, animated: true, completion: nil)
     }
     
-    var selectedMusic: PopularChartMusic?
+    var ownMusic: OwnMusic?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
         setLayout()
+    }
+    
+    func updateMemoData(){
+        self.ownMusic?.setMemo(self.memoView.text)
     }
     
     func setLayout(){
@@ -109,6 +114,7 @@ class ThirdInputViewController: UIViewController {
 extension ThirdInputViewController: PickerDataSendDelegate {
     func sendData(data: String) {
         self.completeButton.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        self.completeButton.isEnabled = true
         self.pickerViewButton.setTitle("\(data)", for: .normal)
     }
 }

@@ -257,7 +257,7 @@ class SecondInputViewController: UIViewController {
     
     @objc func next(_ sender: UIButton){
         let thirdInputVC = ThirdInputViewController()
-        thirdInputVC.selectedMusic = self.selectedMusic
+        thirdInputVC.ownMusic = self.ownMusic
         
         self.navigationController?.pushViewController(thirdInputVC, animated: true)
     }
@@ -265,6 +265,7 @@ class SecondInputViewController: UIViewController {
     @objc func genderButtonPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
         isCondition[0] = !isCondition[0]
+        updateGenderData(sender)
         
         if sender.isSelected {
             sender.layer.borderColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
@@ -283,6 +284,7 @@ class SecondInputViewController: UIViewController {
     @objc func toneButtonPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
         isCondition[1] = !isCondition[1]
+        updateToneData(sender)
         
         if sender.isSelected {
             sender.layer.borderColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
@@ -301,6 +303,7 @@ class SecondInputViewController: UIViewController {
     @objc func beatButtonPressed(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
         isCondition[2] = !isCondition[2]
+        updateBeatData(sender)
         
         if sender.isSelected {
             sender.layer.borderColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
@@ -317,7 +320,7 @@ class SecondInputViewController: UIViewController {
         checkCondition()
     }
     
-    var selectedMusic: PopularChartMusic?
+    var ownMusic: OwnMusic?
     var genderButtons: [UIButton] = [UIButton]()
     var toneButtons: [UIButton] = [UIButton]()
     var beatButtons: [UIButton] = [UIButton]()
@@ -346,6 +349,24 @@ class SecondInputViewController: UIViewController {
         self.nextButton.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         
         print("정보를 입력해주세요!")
+    }
+    
+    func updateGenderData(_ sender: UIButton){
+        if let genderData = sender.titleLabel?.text{
+            self.ownMusic?.setGender(genderData)
+        }
+    }
+    
+    func updateToneData(_ sender: UIButton){
+        if let toneData = sender.titleLabel?.text{
+            self.ownMusic?.setTone(toneData)
+        }
+    }
+    
+    func updateBeatData(_ sender: UIButton){
+        if let beatData = sender.titleLabel?.text{
+            self.ownMusic?.setBeat(beatData)
+        }
     }
     
     func setNavigationItem(){
