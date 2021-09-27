@@ -131,7 +131,14 @@ class FirstInputViewController: UIViewController {
     
     @objc func next(_ sender: UIButton){
         let secondInputVC = SecondInputViewController()
-        secondInputVC.ownMusic = OwnMusic(musicData: self.selectedMusic!, genre: self.genreData)
+        guard let selectedMusic = self.selectedMusic else { return }
+        secondInputVC.ownMusic = OwnMusic(number: selectedMusic.getNumber(),
+                                          title: selectedMusic.getTitle(),
+                                          artist: selectedMusic.getArtist(),
+                                          composer: selectedMusic.getComposer(),
+                                          lyricist: selectedMusic.getLyricist(),
+                                          releaseDate: selectedMusic.getReleaseDate(),
+                                          genre: self.genreData)
         
         self.navigationController?.pushViewController(secondInputVC, animated: true)
     }

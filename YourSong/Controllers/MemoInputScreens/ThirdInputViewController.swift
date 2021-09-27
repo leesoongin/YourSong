@@ -51,7 +51,9 @@ class ThirdInputViewController: UIViewController {
     
     @objc func registOwnMusicList(_ sender: UIButton){
         updateMemoData()
-        print("result -> \(ownMusic?.getMusicData())")
+        print("result -> \((ownMusic)!)")
+        // 여기서 데이터 저장하면 됨
+        // 근데 나만의 리스트가 없으면어떻게하지??
     }
     
     @objc func moveToPickerView(_ sender: UIButton){

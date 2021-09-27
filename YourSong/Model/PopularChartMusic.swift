@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 /*
     순위
     순위 업

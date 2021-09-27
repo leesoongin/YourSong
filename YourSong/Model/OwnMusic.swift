@@ -9,31 +9,31 @@ import UIKit
 import RealmSwift
 
 // 전체적으로 쓰일 음악의 정보들 여기다 쓰자 일단 나중
-class OwnMusic {
-    private var musicData: PopularChartMusic
-    private var genre: String?
-    private var gender: String?
-    private var tone: String?
-    private var beat: String?
-    private var memo: String?
-    
-    init(musicData: PopularChartMusic, genre: String?, gender: String?, tone: String?, beat: String?, memo: String?){
-        self.musicData = musicData
+class OwnMusic: Object {
+    @objc dynamic private var number: String?
+    @objc dynamic private var title: String?
+    @objc dynamic private var artist: String?
+    @objc dynamic private var composer: String? // 작곡가
+    @objc dynamic private var lyricist: String? // 작사가
+    @objc dynamic private var releaseDate: String?
+    @objc dynamic private var genre: String?
+    @objc dynamic private var gender: String?
+    @objc dynamic private var tone: String?
+    @objc dynamic private var beat: String?
+    @objc dynamic private var memo: String?
+    let ofMusicList = LinkingObjects(fromType: OwnMusicList.self, property: "items")
+ 
+    convenience init(number: String, title: String, artist: String, composer: String, lyricist: String, releaseDate: String, genre: String){
+        self.init()
+        self.number = number
+        self.title = title
+        self.artist = artist
+        self.composer = composer
+        self.lyricist = lyricist
+        self.releaseDate = releaseDate
         self.genre = genre
-        self.gender = gender
-        self.tone = tone
-        self.beat = beat
-        self.memo = memo
-    }
-    init (musicData: PopularChartMusic, genre: String){
-        self.musicData = musicData
-        self.genre = genre
     }
     
-    //getter
-    func getMusicData() -> PopularChartMusic {
-        return self.musicData
-    }
     func getGenre() -> String?{
         return self.genre
     }
@@ -49,10 +49,24 @@ class OwnMusic {
     func getMemo() -> String?{
         return self.memo
     }
-    
-    //setter
-    func setMusicData(_ data: PopularChartMusic){
-        self.musicData = data
+ 
+    func setNumber(_ number: String){
+        self.number = number
+    }
+    func setTitle(_ title: String){
+        self.title = title
+    }
+    func setArtist(_ artist: String){
+        self.artist = artist
+    }
+    func setComposer(_ composer: String){
+        self.composer = composer
+    }
+    func setLyricist(_ lyricist: String){
+        self.lyricist = lyricist
+    }
+    func setReleaseDate(_ releaseDate: String){
+        self.releaseDate = releaseDate
     }
     func setGenre(_ genre: String){
         self.genre = genre
