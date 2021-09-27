@@ -9,8 +9,16 @@ import UIKit
 import RealmSwift
 
 class OwnMusicList: Object {
-    @objc dynamic var name: String = ""
+    @objc dynamic private var name: String = ""
     let items = List<OwnMusic>()
+    
+    //getter
+    func getName() -> String{
+        return self.name
+    }
+    func getItems()-> List<OwnMusic>{
+        return self.items
+    }
     
     func setName(_ name: String){
         self.name = name
