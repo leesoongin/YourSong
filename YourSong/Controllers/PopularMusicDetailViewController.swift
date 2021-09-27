@@ -78,13 +78,15 @@ class PopularMusicDetailViewController: UIViewController {
     }
     
     @objc func addToOwnList(_ sender: UIButton){
-        let firstInputViewController = FirstInputViewController()
-        let containerVC = UINavigationController(rootViewController: firstInputViewController)
-        
-        containerVC.modalPresentationStyle = .fullScreen
-        firstInputViewController.selectedMusic = self.selectedMusic
-        
-        self.present(containerVC, animated: true, completion: nil)
+        if checkOwnMusicListExist(){
+            let firstInputViewController = FirstInputViewController()
+            let containerVC = UINavigationController(rootViewController: firstInputViewController)
+            
+            containerVC.modalPresentationStyle = .fullScreen
+            firstInputViewController.selectedMusic = self.selectedMusic
+            
+            self.present(containerVC, animated: true, completion: nil)
+        }
     }
     
     var selectedMusic: PopularChartMusic?
@@ -103,6 +105,22 @@ class PopularMusicDetailViewController: UIViewController {
         bind(music: selectedMusic)
     }
 
+    func checkOwnMusicListExist() -> Bool{
+        // 만약 존재한다면
+        return true
+        //else
+        //checkAlert()
+        //false
+    }
+    
+    func checkAlert(){
+        let alert = UIAlertController(title: "나만의 리스트", message: "나만의 리스트를 먼저 만들어주세요!", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "넹 !", style: .default) { (ok) in }
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func bind(music: PopularChartMusic){
         numberLabel.text = "KY \(music.getNumber())"
         titleLabel.text = music.getTitle()
