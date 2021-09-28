@@ -9,10 +9,14 @@ import UIKit
 import RealmSwift
 
 class OwnMusicList: Object {
+    @objc dynamic private var id: Int = 0
     @objc dynamic private var name: String = ""
     let items = List<OwnMusic>()
     
     //getter
+    func getId() -> Int{
+        return self.id
+    }
     func getName() -> String{
         return self.name
     }
@@ -20,6 +24,10 @@ class OwnMusicList: Object {
         return self.items
     }
     
+    //setter
+    func setId(_  id: Int){
+        self.id = id
+    }
     func setName(_ name: String){
         self.name = name
     }
@@ -28,7 +36,7 @@ class OwnMusicList: Object {
     }
     
     override class func primaryKey() -> String? {
-        return "name"
+        return "id"
     }
 
 }

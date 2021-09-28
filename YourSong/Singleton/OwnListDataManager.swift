@@ -32,7 +32,12 @@ class OwnListDataManager {
     
     // Create
     func createOwnList(name: String){
+        var id = 0
+        if let lastList = realm.objects(OwnMusicList.self).last {
+               id = lastList.getId() + 1
+           }
         let ownList = OwnMusicList()
+        ownList.setId(id)
         ownList.setName(name)
         
         do{
