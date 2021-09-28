@@ -15,12 +15,26 @@ class OwnListDataManager {
     private init() {}
     
     private var ownLists: [OwnMusicList] = [OwnMusicList]()
+    private var titles: [String] = [String]()
+    
+    //getter
+    func getOwnLists() -> [OwnMusicList]{
+        return self.ownLists
+    }
+    func getOwnListTitles() -> [String]{
+        self.titles.removeAll()
+        
+        for list in self.ownLists{
+            self.titles.append(list.getName())
+        }
+        return self.titles
+    }
     
     // Create
-    func addOwnList(ownMusic: OwnMusic, name: String){
+    func createOwnList(name: String){
         let ownList = OwnMusicList()
         ownList.setName(name)
-        ownList.add(ownMusic)
+        
         do{
             try realm.write{
                 realm.add(ownList)
@@ -32,13 +46,30 @@ class OwnListDataManager {
     
     //Read
     func readData(){
-        var person: Results<OwnMusicList>
+        var ownList: Results<OwnMusicList>
+
+        ownList = realm.objects(OwnMusicList.self)
         
-        person = realm.objects(OwnMusicList.self)
+        self.ownLists.removeAll()
+        self.ownLists.append(contentsOf: ownList)
+        print("--> \(ownLists)")
+    }
+    
+    //Update
+    func addOwnMusic(ownMusic: OwnMusic, titleName: String){
+        var data: Results<OwnMusicList>
+        data = realm.objects(OwnMusicList.self).filter("name == '\(titleName)'")
         
-        for element in person {
-            print("element --> \(element)")
+        do{
+            try realm.write{
+                data[0].items.append(ownMusic)
+            }
+        }catch let error {
+            print("error --> \(error.localizedDescription)")
         }
     }
- 
+    
+    func findUrl(){
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+    }
 }

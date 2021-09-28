@@ -34,6 +34,7 @@
 		A8B2434627007953001C7E40 /* OwnMusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2434527007952001C7E40 /* OwnMusicList.swift */; };
 		A8B2436327018E15001C7E40 /* OwnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2436227018E15001C7E40 /* OwnListCell.swift */; };
 		A8B243662701A44C001C7E40 /* OwnListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B243652701A44C001C7E40 /* OwnListDataManager.swift */; };
+		A8B2436B2701AC62001C7E40 /* NamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2436A2701AC62001C7E40 /* NamingViewController.swift */; };
 		A8D725CB26F724A10010D3D6 /* PopularChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */; };
 		A8D725CF26F78DA60010D3D6 /* PopularMusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */; };
 		A8EBD6B826FA092200CF1EC9 /* MusicSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EBD6B726FA092200CF1EC9 /* MusicSearchManager.swift */; };
@@ -76,6 +77,7 @@
 		A8B2434527007952001C7E40 /* OwnMusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusicList.swift; sourceTree = "<group>"; };
 		A8B2436227018E15001C7E40 /* OwnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListCell.swift; sourceTree = "<group>"; };
 		A8B243652701A44C001C7E40 /* OwnListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListDataManager.swift; sourceTree = "<group>"; };
+		A8B2436A2701AC62001C7E40 /* NamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamingViewController.swift; sourceTree = "<group>"; };
 		A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartDelegate.swift; sourceTree = "<group>"; };
 		A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMusicDetailViewController.swift; sourceTree = "<group>"; };
 		A8EBD6B726FA092200CF1EC9 /* MusicSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchManager.swift; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 				A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */,
 				A868EE8726F25B00002BF67B /* PopularChartViewController.swift */,
 				A868EE8A26F25B32002BF67B /* MusicSearchViewController.swift */,
-				A868EE9026F25BD2002BF67B /* OwnMusicListViewController.swift */,
+				A8B243692701AB3F001C7E40 /* OwnMusicList */,
 				A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */,
 				A854CB1C26F609E500D39D6D /* PopularCharts */,
 				A81470F426FDACB80038CCCF /* MemoInputScreens */,
@@ -216,6 +218,15 @@
 				A8EBD6C526FB41AD00CF1EC9 /* MusicSearchResults.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A8B243692701AB3F001C7E40 /* OwnMusicList */ = {
+			isa = PBXGroup;
+			children = (
+				A868EE9026F25BD2002BF67B /* OwnMusicListViewController.swift */,
+				A8B2436A2701AC62001C7E40 /* NamingViewController.swift */,
+			);
+			path = OwnMusicList;
 			sourceTree = "<group>";
 		};
 		A8D725C926F723980010D3D6 /* Protocols */ = {
@@ -365,6 +376,7 @@
 				A868EE5826F254FB002BF67B /* ViewController.swift in Sources */,
 				A81470FF26FDAE7F0038CCCF /* ThirdInputViewController.swift in Sources */,
 				A81470F626FDADEB0038CCCF /* FirstInputViewController.swift in Sources */,
+				A8B2436B2701AC62001C7E40 /* NamingViewController.swift in Sources */,
 				A854CB2726F60A7300D39D6D /* HiphopViewController.swift in Sources */,
 				A854CB2426F60A5500D39D6D /* DanceViewController.swift in Sources */,
 				A854CB2E26F63FE400D39D6D /* PopularChartManager.swift in Sources */,

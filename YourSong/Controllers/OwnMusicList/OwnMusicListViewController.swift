@@ -9,6 +9,10 @@ import UIKit
 import Then
 import SnapKit
 
+protocol OwnMusicListDelegate{
+    func reloadData()
+}
+
 class OwnMusicListViewController: UIViewController {
     let flowLayout = UICollectionViewFlowLayout().then{
         $0.scrollDirection = .vertical
@@ -22,11 +26,7 @@ class OwnMusicListViewController: UIViewController {
         $0.register(OwnListCell.self, forCellWithReuseIdentifier: OwnListCell.identifier)
     }
     
-    let test1 = OwnMusicList()
-    let test2 = OwnMusicList()
-    let test3 = OwnMusicList()
-    let test4 = OwnMusicList()
-    var dummyOwnList: [OwnMusicList] = [OwnMusicList]()
+    private let dataManager = OwnListDataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,23 +35,13 @@ class OwnMusicListViewController: UIViewController {
         setNavigationItem()
         setLayout()
         config()
-        //test func
-        testSetDummy()
+        dataManager.readData()
     }
     
-    func testSetDummy(){
-        test1.setName("first name test")
-        test1.add(OwnMusic(number: "test", title: "test", artist: "test", composer: "test", lyricist: "test", releaseDate: "test", genre: "test"))
-        test2.setName("second name test")
-        test2.add(OwnMusic(number: "test", title: "test", artist: "test", composer: "test", lyricist: "test", releaseDate: "test", genre: "test"))
-        test3.setName("second name test")
-        test3.add(OwnMusic(number: "test", title: "test", artist: "test", composer: "test", lyricist: "test", releaseDate: "test", genre: "test"))
-        test4.setName("second name test")
-        test4.add(OwnMusic(number: "test", title: "test", artist: "test", composer: "test", lyricist: "test", releaseDate: "test", genre: "test"))
-        dummyOwnList.append(test1)
-        dummyOwnList.append(test2)
-        dummyOwnList.append(test3)
-        dummyOwnList.append(test4)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        dataManager.readData()
+        self.collectionView.reloadData()
     }
     
     func config(){
@@ -74,7 +64,10 @@ class OwnMusicListViewController: UIViewController {
     }
     
     @objc func addOwnList(_ sender: Any){
+        let namingVC = NamingViewController()
+        namingVC.delegate = self
         
+        self.present(namingVC, animated: true, completion: nil)
     }
     
     func setLayout(){
@@ -88,7 +81,7 @@ class OwnMusicListViewController: UIViewController {
 
 extension OwnMusicListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.dummyOwnList.count
+        return self.dataManager.getOwnLists().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -96,7 +89,7 @@ extension OwnMusicListViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.config(ownList: self.dummyOwnList[indexPath.row])
+        cell.config(ownList: self.dataManager.getOwnLists()[indexPath.row])
         
         return cell
     }
@@ -117,5 +110,12 @@ extension OwnMusicListViewController: UICollectionViewDelegateFlowLayout {
         print("view width -----> \(width) , cell height ----> \(height)")
         
         return CGSize(width: width, height: height)
+    }
+}
+
+extension OwnMusicListViewController: OwnMusicListDelegate{
+    func reloadData() {
+        dataManager.readData()
+        self.collectionView.reloadData()
     }
 }

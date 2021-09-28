@@ -40,15 +40,16 @@ class PickerViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    var dummyOwnList: [String] = ["슬플때 듣기 좋은 ㅠㅠ", "너무 행보캐 !", "ㅋㅋㄹㅃㅃ", "테스트 모골!"]
     var pickerDataDelegate: PickerDataSendDelegate?
+    let dataManager = OwnListDataManager.shared
     private var selectedOwnList: String = "" // 선택된 나만의 리스트 정보 저장할거다!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         
-        selectedOwnList = dummyOwnList[0]
+        self.dataManager.readData()
+        selectedOwnList = dataManager.getOwnListTitles()[0]
         
         config()
         setLayout()
@@ -88,17 +89,17 @@ extension PickerViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.dummyOwnList.count
+        return self.dataManager.getOwnListTitles().count
     }
 }
 
 extension PickerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.dummyOwnList[row]
+        return self.dataManager.getOwnListTitles()[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.selectedOwnList = self.dummyOwnList[row]
+        self.selectedOwnList = self.dataManager.getOwnListTitles()[row]
     }
 }
 
