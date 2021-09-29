@@ -98,7 +98,12 @@ extension OwnMusicListViewController: UICollectionViewDataSource {
 }
 
 extension OwnMusicListViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = MusicListDetailViewController()
+        detailVC.musicList = dataManager.getOwnLists()[indexPath.row]
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension OwnMusicListViewController: UICollectionViewDelegateFlowLayout {

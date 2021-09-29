@@ -35,6 +35,8 @@
 		A8B2436327018E15001C7E40 /* OwnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2436227018E15001C7E40 /* OwnListCell.swift */; };
 		A8B243662701A44C001C7E40 /* OwnListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B243652701A44C001C7E40 /* OwnListDataManager.swift */; };
 		A8B2436B2701AC62001C7E40 /* NamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2436A2701AC62001C7E40 /* NamingViewController.swift */; };
+		A8B2437327034AD3001C7E40 /* MusicListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2437227034AD3001C7E40 /* MusicListDetailViewController.swift */; };
+		A8B243762703856C001C7E40 /* MyMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B243752703856C001C7E40 /* MyMusicCell.swift */; };
 		A8D725CB26F724A10010D3D6 /* PopularChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */; };
 		A8D725CF26F78DA60010D3D6 /* PopularMusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */; };
 		A8EBD6B826FA092200CF1EC9 /* MusicSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EBD6B726FA092200CF1EC9 /* MusicSearchManager.swift */; };
@@ -78,6 +80,8 @@
 		A8B2436227018E15001C7E40 /* OwnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListCell.swift; sourceTree = "<group>"; };
 		A8B243652701A44C001C7E40 /* OwnListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListDataManager.swift; sourceTree = "<group>"; };
 		A8B2436A2701AC62001C7E40 /* NamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamingViewController.swift; sourceTree = "<group>"; };
+		A8B2437227034AD3001C7E40 /* MusicListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListDetailViewController.swift; sourceTree = "<group>"; };
+		A8B243752703856C001C7E40 /* MyMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicCell.swift; sourceTree = "<group>"; };
 		A8D725CA26F724A10010D3D6 /* PopularChartDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartDelegate.swift; sourceTree = "<group>"; };
 		A8D725CE26F78DA60010D3D6 /* PopularMusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMusicDetailViewController.swift; sourceTree = "<group>"; };
 		A8EBD6B726FA092200CF1EC9 /* MusicSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchManager.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 			children = (
 				A868EE9026F25BD2002BF67B /* OwnMusicListViewController.swift */,
 				A8B2436A2701AC62001C7E40 /* NamingViewController.swift */,
+				A8B2437227034AD3001C7E40 /* MusicListDetailViewController.swift */,
 			);
 			path = OwnMusicList;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				A854CB2926F6156F00D39D6D /* PopularChartCell.swift */,
 				A8EBD6C926FB558A00CF1EC9 /* SearchChartCell.swift */,
 				A8B2436227018E15001C7E40 /* OwnListCell.swift */,
+				A8B243752703856C001C7E40 /* MyMusicCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				A868EE9B26F27435002BF67B /* OwnMusic.swift in Sources */,
 				A854CB2A26F6156F00D39D6D /* PopularChartCell.swift in Sources */,
 				A814710726FE29B50038CCCF /* PickerViewController.swift in Sources */,
+				A8B243762703856C001C7E40 /* MyMusicCell.swift in Sources */,
 				A8EBD6BF26FB413B00CF1EC9 /* SearchedMusic.swift in Sources */,
 				A8EBD6C626FB41AD00CF1EC9 /* MusicSearchResults.swift in Sources */,
 				A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */,
@@ -399,6 +406,7 @@
 				A868EE8E26F25BA3002BF67B /* TodayMusicViewController.swift in Sources */,
 				A868EE5626F254FB002BF67B /* SceneDelegate.swift in Sources */,
 				A8B2436327018E15001C7E40 /* OwnListCell.swift in Sources */,
+				A8B2437327034AD3001C7E40 /* MusicListDetailViewController.swift in Sources */,
 				A81470FA26FDAE280038CCCF /* SecondInputViewController.swift in Sources */,
 				A8EBD6CA26FB558A00CF1EC9 /* SearchChartCell.swift in Sources */,
 				A8D725CF26F78DA60010D3D6 /* PopularMusicDetailViewController.swift in Sources */,

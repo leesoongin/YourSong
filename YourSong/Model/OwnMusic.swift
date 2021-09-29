@@ -34,6 +34,15 @@ class OwnMusic: Object {
         self.genre = genre
     }
     
+    func getNumber() -> String?{
+        return self.number
+    }
+    func getTitle() -> String?{
+        return self.title
+    }
+    func getArtist() -> String?{
+        return self.artist
+    }
     func getGenre() -> String?{
         return self.genre
     }
