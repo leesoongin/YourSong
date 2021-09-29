@@ -13,3 +13,8 @@ protocol PopularChartDelegate {
     var firstPage: String { get }
     var secondPage: String { get }
 }
+
+
+protocol PopularChartCellDelegate{
+    func moveToDetail(musicData: PopularChartMusic)
+}

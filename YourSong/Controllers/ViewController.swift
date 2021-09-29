@@ -36,8 +36,7 @@ class ViewController: UITabBarController {
         musicSearchViewController.tabBarItem.image = UIImage(named: "searchIcon")
         musicSearchViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         
-        let ownMusicListViewController = OwnMusicListViewController()
-        ownMusicListViewController.view.backgroundColor = .green
+        let ownMusicListViewController = UINavigationController(rootViewController: OwnMusicListViewController())
         ownMusicListViewController.tabBarItem.image = UIImage(named: "ownListIcon")
         ownMusicListViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         

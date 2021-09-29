@@ -34,11 +34,15 @@ class MusicSearchViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        
         setNavigationItem()
         config()
         setUI()
         setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     func failMusicSearch(){
@@ -47,6 +51,24 @@ class MusicSearchViewController: UIViewController {
            print("그래 그래~")
         }
         alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func checkAlert(musicData: PopularChartMusic){
+        let alert = UIAlertController(title: "나만의 리스트", message: "해당 음원을 추가하실건가요?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "넹 !", style: .default) { (ok) in
+            let firstInputViewController = FirstInputViewController()
+            let containerVC = UINavigationController(rootViewController: firstInputViewController)
+            
+            containerVC.modalPresentationStyle = .fullScreen
+            firstInputViewController.selectedMusic = musicData
+            
+            self.present(containerVC, animated: true, completion: nil)
+        }
+        let cancel = UIAlertAction(title: "아뇨 !", style: .cancel)
+        alert.addAction(ok)
+        alert.addAction(cancel)
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -75,7 +97,7 @@ class MusicSearchViewController: UIViewController {
     func setNavigationItem(){
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "음악 검색"
-        self.navigationItem.hidesSearchBarWhenScrolling = true //스크롤할때 searchbar 안숨기기
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = .black
         self.navigationController?.navigationBar.barTintColor = .white
@@ -91,12 +113,9 @@ extension MusicSearchViewController: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchChartCell.identifier) as? SearchChartCell else {
             return UITableViewCell()
         }
-        let number = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row].getNumber()
-        let title = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row].getTitle()
-        let artist = self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row].getArtist()
 
-        cell.setBind(number: number, title: title, artist: artist)
-        
+        cell.setBind(musicData: self.musicSearchManager.getMusicSearchResults().getDocument()[indexPath.row])
+        cell.popularChartCellDelegate = self
         return cell
     }
     
@@ -110,7 +129,6 @@ extension MusicSearchViewController: UITableViewDelegate {
         
         detailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailVC, animated: true)
-//        self.present(detailVC, animated: true, completion: nil)
     }
 }
 
@@ -145,9 +163,6 @@ extension MusicSearchViewController: UISearchBarDelegate {
             }
             self.tableView.reloadData()
         }
-        
-        
-       
     }
 }
 
@@ -176,5 +191,11 @@ extension MusicSearchViewController: UIScrollViewDelegate {
             }
             
         }
+    }
+}
+
+extension MusicSearchViewController: PopularChartCellDelegate {
+    func moveToDetail(musicData: PopularChartMusic) {
+        checkAlert(musicData: musicData)
     }
 }

@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 class PopularMusicDetailViewController: UIViewController {
+
+    
     var backgroundImageView: UIImageView = UIImageView().then{
         $0.image = UIImage(named: "detailViewBackground")
         $0.contentMode = .scaleAspectFit
@@ -71,8 +73,20 @@ class PopularMusicDetailViewController: UIViewController {
         $0.addTarget(self, action: #selector(addToOwnList(_:)), for: .touchUpInside)
     }
     
+    @objc func close(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func addToOwnList(_ sender: UIButton){
-        print("여기서 나만의 리스트 추가!!")
+        if checkOwnMusicListExist(){
+            let firstInputViewController = FirstInputViewController()
+            let containerVC = UINavigationController(rootViewController: firstInputViewController)
+            
+            containerVC.modalPresentationStyle = .fullScreen
+            firstInputViewController.selectedMusic = self.selectedMusic
+            
+            self.present(containerVC, animated: true, completion: nil)
+        }
     }
     
     var selectedMusic: PopularChartMusic?
@@ -87,13 +101,26 @@ class PopularMusicDetailViewController: UIViewController {
         }
         
         setLayout()
+        setNavigationItem()
         bind(music: selectedMusic)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    
-        
+
+    func checkOwnMusicListExist() -> Bool{
+        // 만약 존재한다면
+        return true
+        //else
+        //checkAlert()
+        //false
     }
+    
+    func checkAlert(){
+        let alert = UIAlertController(title: "나만의 리스트", message: "나만의 리스트를 먼저 만들어주세요!", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "넹 !", style: .default) { (ok) in }
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func bind(music: PopularChartMusic){
         numberLabel.text = "KY \(music.getNumber())"
         titleLabel.text = music.getTitle()
@@ -103,8 +130,20 @@ class PopularMusicDetailViewController: UIViewController {
         releaseDateLabel.text = "발매일: \(music.getReleaseDate())"
     }
     
+    func setNavigationItem(){
+        let leftBarButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(close(_:))).then{
+            $0.image = UIImage(systemName: "chevron.backward")
+            $0.tintColor = .white
+        }
+        
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
     func setLayout(){
         let margin: CGFloat = 16
+        
         self.view.addSubview(backgroundImageView)
         self.view.addSubview(backgroundView)
         self.view.addSubview(topView)
@@ -126,6 +165,8 @@ class PopularMusicDetailViewController: UIViewController {
             $0.top.leading.trailing.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
+       
+        
         topView.snp.makeConstraints{
             $0.top.leading.equalTo(self.view.safeAreaLayoutGuide).offset(margin)
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(margin)
@@ -133,7 +174,7 @@ class PopularMusicDetailViewController: UIViewController {
         }
         
         numberLabel.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(50)
+            $0.top.equalToSuperview().offset(60)
             $0.leading.equalToSuperview().offset(margin)
             $0.trailing.equalToSuperview()
         }
