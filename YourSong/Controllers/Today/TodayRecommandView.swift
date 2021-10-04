@@ -22,10 +22,18 @@ class TodayRecommandView: UIView {
         $0.register(TodayRecommandCell.self, forCellWithReuseIdentifier: TodayRecommandCell.identifier)
     }
     
+    // 크롤링 해 온 데이터 넣장
+    private let melonCrawlingManager = MelonCrawlingManager.shared
+    private var albums: [RecommandAlbum] = [RecommandAlbum]()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupSubviews()
+        melonCrawlingManager.requestRecommandAlbums{ response in
+            self.albums.append(contentsOf: response)
+            self.collectionView.reloadData()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -35,7 +43,7 @@ class TodayRecommandView: UIView {
 
 extension TodayRecommandView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.albums.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,6 +51,10 @@ extension TodayRecommandView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        cell.config(imageUrl: albums[indexPath.row].getThumbnailImageUrl(),
+                    title: albums[indexPath.row].getAlbumTitle(),
+                    musicCount: albums[indexPath.row].getMusicCount(),
+                    hashTag: albums[indexPath.row].getHashTag())
         
         return cell
     }
@@ -56,11 +68,12 @@ extension TodayRecommandView: UICollectionViewDelegate {
 
 extension TodayRecommandView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 32.0, height: collectionView.frame.width)
+        let margin: CGFloat = 16.0
+        return CGSize(width: collectionView.frame.width - margin * 2, height: collectionView.frame.height - margin * 4)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let inset: CGFloat = 16.0
-        return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        return UIEdgeInsets(top: inset * 2, left: inset, bottom: inset * 2, right: inset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -73,9 +86,7 @@ private extension TodayRecommandView {
         self.addSubview(collectionView)
         
         collectionView.snp.makeConstraints{
-            $0.top.equalToSuperview().inset(16.0)
-            $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(self.snp.width)
+            $0.edges.equalToSuperview()
         }
     }
 }

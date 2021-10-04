@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 import Then
-
+import Kingfisher
 
 class TodayRecommandCell: UICollectionViewCell {
     static let identifier: String = "TodayRecommandCollectionViewCell"
@@ -19,20 +19,20 @@ class TodayRecommandCell: UICollectionViewCell {
     }
     let bgView = UIView().then{
         $0.backgroundColor = .black
-        $0.alpha = 0.3
+        $0.alpha = 0.5
     }
     
-    let numberLabel: UILabel = UILabel().then{
-        $0.font = UIFont.boldSystemFont(ofSize: 16)
-        $0.textColor = .white
-    }
     let titleLabel: UILabel = UILabel().then{
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 4
         $0.font = UIFont.boldSystemFont(ofSize: 22)
         $0.textColor = .white
     }
-    let artistLabel: UILabel = UILabel().then{
+    let likeCountLabel: UILabel = UILabel().then{
+        $0.font = UIFont.boldSystemFont(ofSize: 16)
+        $0.textColor = .white
+    }
+    let musicCountLabel: UILabel = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 16)
         $0.textColor = .white
     }
@@ -42,16 +42,14 @@ class TodayRecommandCell: UICollectionViewCell {
         $0.distribution = .equalSpacing
         $0.spacing = 8.0
     }
-    
-    let memoTextView = UITextView().then{
-        $0.layer.cornerRadius = 5
-        $0.text = "asddd"
-        $0.backgroundColor = .clear
-        $0.font = UIFont.boldSystemFont(ofSize: 16)
-        $0.textColor = .white
-        $0.isEditable = false
+    let tagButtonOne = UIButton().then{
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.tintColor = .black
     }
-
+    let tagButtonTwo = UIButton().then{
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.tintColor = .black
+    }
     
     override init(frame : CGRect) {
         super.init(frame: frame)
@@ -60,7 +58,6 @@ class TodayRecommandCell: UICollectionViewCell {
         self.layer.cornerRadius = 10
 
         setupLayout()
-        config()
     }
     
     required init?(coder: NSCoder) {
@@ -68,11 +65,10 @@ class TodayRecommandCell: UICollectionViewCell {
         
     }
     
-    func config(){
-        self.numberLabel.text = "📖  KY 1234567"
-        self.titleLabel.text = "밝게 빛나는 별이 되어 줄게 (Cover. 류민희)"
-        self.artistLabel.text = "류민희 "
-        self.memoTextView.text = "✏️\n\n언제나 널 지켜줄게 세상이 널 아프게 할때~~ 내가 안아줄게 매일"
+    func config(imageUrl: String, title: String, musicCount: String, hashTag: [String]){
+        self.bgImageView.kf.setImage(with: URL(string: imageUrl))
+        self.titleLabel.text = "🍂\n\(title)"
+        self.musicCountLabel.text = "총 \(musicCount)"
     }
     
     private func setupLayout(){
@@ -85,30 +81,17 @@ class TodayRecommandCell: UICollectionViewCell {
         
         self.contentView.addSubview(bgView)
         bgView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
-        }
-        
-        self.contentView.addSubview(numberLabel)
-        numberLabel.snp.makeConstraints{
-            $0.top.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(margin)
-            $0.trailing.equalTo(self.contentView.safeAreaLayoutGuide).inset(margin)
+            $0.top.leading.trailing.bottom.equalToSuperview()
+//            $0.height.equalTo(self.contentView.frame.width / 2 - margin)
         }
         
         self.contentView.addSubview(topStackView)
         topStackView.snp.makeConstraints{
-            $0.top.equalTo(numberLabel.snp.bottom).offset(margin)
             $0.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(margin)
-            $0.trailing.equalTo(self.contentView.safeAreaLayoutGuide).inset(margin)
+            $0.trailing.bottom.equalTo(self.contentView.safeAreaLayoutGuide).inset(margin)
         }
         
         topStackView.addArrangedSubview(titleLabel)
-        topStackView.addArrangedSubview(artistLabel)
-        
-        self.contentView.addSubview(memoTextView)
-        memoTextView.snp.makeConstraints{
-            $0.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(margin)
-            $0.bottom.trailing.equalTo(self.contentView.safeAreaLayoutGuide).inset(margin)
-            $0.height.equalTo(150)
-        }
+        topStackView.addArrangedSubview(musicCountLabel)       
     }
 }

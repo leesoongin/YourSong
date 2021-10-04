@@ -16,7 +16,6 @@ import Alamofire
 /*
  썸네일 이미지: #djPlylstList > div > ul > li:nth-child(5) > div.thumb > a > img
  앨범이름: #djPlylstList > div > ul > li:nth-child(5) > div.entry > div.info > a.ellipsis.album_name
- 좋아요수: #djPlylstList > div > ul > li:nth-child(5) > div.entry > div.meta > span
  총 수록곡: #djPlylstList > div > ul > li:nth-child(5) > div.entry > div.meta > span
  해시태그: #djPlylstList > div > ul > li:nth-child(5) > div.entry > div.tag_list > a:nth-child(1) > span
  */
@@ -33,11 +32,10 @@ class MelonCrawlingManager {
     
     private init() {}
     
-    func requestRecommandAlbums(){
+    func requestRecommandAlbums(completion: @escaping (([RecommandAlbum])->(Void))){
         let url = "https://www.melon.com/genre/recmconts_list.htm?gnrCode=GN0100&tabType=DJ"
         var thumbnailImage: String = ""
         var album: String = ""
-        var likeCount: String = ""
         var musicCount: String = ""
         var hashTag: [String] = []
         var recommandAlbums = [RecommandAlbum]()
@@ -61,7 +59,6 @@ class MelonCrawlingManager {
                     if (index == 4 || index == 7 || index == 17 || index == 19){
                         thumbnailImage = try element.select("div.thumb > a > img").attr("src").description
                         album = try element.select("div.entry > div.info > a.ellipsis.album_name").text()
-                        likeCount = try element.select("div.entry > div.meta > span").text() // 작사가
                         musicCount = try element.select("div.entry > div.meta > span").text() // 발매일
                         for tag in try element.select("div.entry > div.tag_list > a"){
                             hashTag.append(try tag.select("span").text())
@@ -69,13 +66,11 @@ class MelonCrawlingManager {
                         recommandAlbums.append(RecommandAlbum(
                                                 thumbnailImageUrl: thumbnailImage,
                                                 albumTitle: album,
-                                                likeCount: likeCount,
                                                 musicCount: musicCount,
                                                 hashTag: hashTag))
                     }
                 }// for
-                
-                print(recommandAlbums)
+                completion(recommandAlbums)
             } catch {
                 print("crawl error")
             }// catch

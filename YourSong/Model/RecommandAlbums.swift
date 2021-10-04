@@ -22,14 +22,12 @@ struct RecommandAlbums {
 struct RecommandAlbum {
     private var thumbnailImageUrl: String
     private var albumTitle: String
-    private var likeCount: String
     private var musicCount: String
     private var hashTag: [String]
     
-    init(thumbnailImageUrl: String, albumTitle: String, likeCount: String, musicCount: String, hashTag: [String]){
+    init(thumbnailImageUrl: String, albumTitle: String, musicCount: String, hashTag: [String]){
         self.thumbnailImageUrl = thumbnailImageUrl
         self.albumTitle = albumTitle
-        self.likeCount = likeCount
         self.musicCount = musicCount
         self.hashTag = hashTag
     }
@@ -40,9 +38,6 @@ struct RecommandAlbum {
     }
     func getAlbumTitle() -> String {
         return self.albumTitle
-    }
-    func getLikeCount() -> String {
-        return self.likeCount
     }
     func getMusicCount() -> String {
         return self.musicCount
