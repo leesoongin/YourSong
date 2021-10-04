@@ -14,6 +14,9 @@
 		A851DE15270B1F9000D31A7B /* TodayRecommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */; };
 		A851DE18270B37E500D31A7B /* MelonCrawlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */; };
 		A851DE1B270B5CAE00D31A7B /* RecommandAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */; };
+		A851DE35270B733600D31A7B /* RecommandMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE34270B733600D31A7B /* RecommandMusic.swift */; };
+		A851DE38270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE37270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift */; };
+		A851DE3B270B819500D31A7B /* TodayRecommandDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE3A270B819500D31A7B /* TodayRecommandDetailCell.swift */; };
 		A854CB0D26F605A300D39D6D /* PopularChart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A854CB0C26F605A300D39D6D /* PopularChart.storyboard */; };
 		A854CB1E26F60A1D00D39D6D /* TotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A854CB1D26F60A1D00D39D6D /* TotalViewController.swift */; };
 		A854CB2126F60A3500D39D6D /* BalladeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A854CB2026F60A3500D39D6D /* BalladeViewController.swift */; };
@@ -60,6 +63,9 @@
 		A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandCell.swift; sourceTree = "<group>"; };
 		A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelonCrawlingManager.swift; sourceTree = "<group>"; };
 		A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandAlbums.swift; sourceTree = "<group>"; };
+		A851DE34270B733600D31A7B /* RecommandMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandMusic.swift; sourceTree = "<group>"; };
+		A851DE37270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandDetailViewController.swift; sourceTree = "<group>"; };
+		A851DE3A270B819500D31A7B /* TodayRecommandDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandDetailCell.swift; sourceTree = "<group>"; };
 		A854CB0C26F605A300D39D6D /* PopularChart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopularChart.storyboard; sourceTree = "<group>"; };
 		A854CB1D26F60A1D00D39D6D /* TotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalViewController.swift; sourceTree = "<group>"; };
 		A854CB2026F60A3500D39D6D /* BalladeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalladeViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 				A8EBD6BE26FB413B00CF1EC9 /* SearchedMusic.swift */,
 				A8EBD6C526FB41AD00CF1EC9 /* MusicSearchResults.swift */,
 				A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */,
+				A851DE34270B733600D31A7B /* RecommandMusic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,7 +246,9 @@
 			children = (
 				A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */,
 				A87662A8270B16CD000156AE /* TodayRecommandView.swift */,
+				A851DE37270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift */,
 				A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */,
+				A851DE3A270B819500D31A7B /* TodayRecommandDetailCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -398,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A851DE35270B733600D31A7B /* RecommandMusic.swift in Sources */,
 				A854CB1E26F60A1D00D39D6D /* TotalViewController.swift in Sources */,
 				A868EE5826F254FB002BF67B /* ViewController.swift in Sources */,
 				A851DE18270B37E500D31A7B /* MelonCrawlingManager.swift in Sources */,
@@ -420,6 +430,7 @@
 				A8D725CB26F724A10010D3D6 /* PopularChartDelegate.swift in Sources */,
 				A868EE9B26F27435002BF67B /* OwnMusic.swift in Sources */,
 				A854CB2A26F6156F00D39D6D /* PopularChartCell.swift in Sources */,
+				A851DE3B270B819500D31A7B /* TodayRecommandDetailCell.swift in Sources */,
 				A814710726FE29B50038CCCF /* PickerViewController.swift in Sources */,
 				A8B243762703856C001C7E40 /* MyMusicCell.swift in Sources */,
 				A8EBD6BF26FB413B00CF1EC9 /* SearchedMusic.swift in Sources */,
@@ -427,6 +438,7 @@
 				A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */,
 				A8B2434627007953001C7E40 /* OwnMusicList.swift in Sources */,
 				A868EE9126F25BD2002BF67B /* OwnMusicListViewController.swift in Sources */,
+				A851DE38270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift in Sources */,
 				A868EE8E26F25BA3002BF67B /* TodayMusicViewController.swift in Sources */,
 				A868EE5626F254FB002BF67B /* SceneDelegate.swift in Sources */,
 				A8B2436327018E15001C7E40 /* OwnListCell.swift in Sources */,

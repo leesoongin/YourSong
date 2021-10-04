@@ -9,9 +9,15 @@ import UIKit
 import SnapKit
 import Then
 
+protocol TodayMusicDelegate {
+    func moveToDetailView(index: Int)
+}
+
 class TodayMusicViewController: UIViewController {
    
-    let todayRecommandView = TodayRecommandView(frame: .zero)
+    lazy var todayRecommandView = TodayRecommandView(frame: .zero).then{
+        $0.delegate = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +37,20 @@ extension TodayMusicViewController {
         self.navigationItem.backBarButtonItem?.tintColor = .black
     }
     
-    func setupLayout(){
-        let margin: CGFloat = 16.0
-        
+    func setupLayout(){        
         self.view.addSubview(todayRecommandView)
         
         todayRecommandView.snp.makeConstraints{
             $0.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
+    }
+}
+
+extension TodayMusicViewController: TodayMusicDelegate {
+    func moveToDetailView(index: Int) {
+        let todayRecommandDetailVC = TodayRecommandDetailViewController()
+        todayRecommandDetailVC.idx = index
+        
+        self.present(todayRecommandDetailVC, animated: true, completion: nil)
     }
 }

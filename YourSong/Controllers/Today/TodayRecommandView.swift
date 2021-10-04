@@ -25,7 +25,8 @@ class TodayRecommandView: UIView {
     // 크롤링 해 온 데이터 넣장
     private let melonCrawlingManager = MelonCrawlingManager.shared
     private var albums: [RecommandAlbum] = [RecommandAlbum]()
-
+    var delegate: TodayMusicDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -63,7 +64,11 @@ extension TodayRecommandView: UICollectionViewDataSource {
 }
 
 extension TodayRecommandView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let delegate = self.delegate {
+            delegate.moveToDetailView(index: indexPath.row)
+        }
+    }
 }
 
 extension TodayRecommandView: UICollectionViewDelegateFlowLayout {
