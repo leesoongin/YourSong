@@ -128,7 +128,7 @@ class MyMusicCell: UICollectionViewCell {
         self.genderLabel.text = "👫  성별  \(ownList.getGender() ?? "")"
         self.toneLabel.text = "🎵  음정  \(ownList.getTone() ?? "")"
         self.beatLabel.text = "🥁  박자  \(ownList.getBeat() ?? "")"
-        self.memoTextView.text = ownList.getMemo()
+        self.memoTextView.text = "✏️  \(ownList.getMemo() ?? "")"
     }
     
     func setLayout(){
