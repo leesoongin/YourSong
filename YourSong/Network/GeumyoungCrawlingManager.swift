@@ -53,8 +53,8 @@ import Alamofire
 
 
 enum PopularChartAddresses {
-    static let totalChartsFirst = "https://kysing.kr/popular/?period=w" // 전체 인기차트 순위
-    static let totalChartsSecond = "https://kysing.kr/popular/?period=w&range=2"
+    static let totalChartsFirst = "https://kysing.kr/popular/?period=" // 전체 인기차트 순위
+    static let totalChartsSecond = "https://kysing.kr/popular/?period=&range=2"
     static let balladeChartsFirst = "https://kysing.kr/genre-polular/?genre=01" // 발라드 인기차트 순위
     static let balladeChartsSecond = "https://kysing.kr/genre-polular/?genre=01&range=2"
     static let danceChartsFirst = "https://kysing.kr/genre-polular/?genre=02" // 댄스 인기차트 순위
@@ -202,6 +202,7 @@ class GeumyoungCrawlingManager {
                     }
                     popularChart.append(PopularChartMusic(rank: rank, rankUp: rankUp, rankDown: rankDown, number: number, title: title, artist: artist, composer: composer, lyricist: lyricist, releaseDate: releaseDate))
                 }
+                
                 popularChart.removeFirst() // 맨 앞 요소는 표 정보라서 제외 ㅇㅇ
                 popularChart.removeLast()
                 completion(popularChart)

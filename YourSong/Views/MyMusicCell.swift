@@ -13,8 +13,19 @@ class MyMusicCell: UICollectionViewCell {
     static let identifier: String = "myMusicCell"
     
     let topView = UIView()
+    let bgImageView = UIImageView().then{
+        $0.image = UIImage(named: "detailListBackground")
+        $0.layer.cornerRadius = 10
+        $0.contentMode = .scaleAspectFill
+    }
+    let bgView = UIView().then{
+        $0.backgroundColor = .black
+        $0.alpha = 0.5
+    }
+    
     let numberLabel: UILabel = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 16)
+        $0.textColor = .white
     }
     let titleAndArtistStackView = UIStackView().then{
         $0.axis = .vertical
@@ -26,9 +37,11 @@ class MyMusicCell: UICollectionViewCell {
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 4
         $0.font = UIFont.boldSystemFont(ofSize: 24)
+        $0.textColor = .white
     }
     let artistLabel: UILabel = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 16)
+        $0.textColor = .white
     }
     
     let bottomView = UIView()
@@ -50,6 +63,7 @@ class MyMusicCell: UICollectionViewCell {
     let genderLabel = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 16)
         $0.text = "성별"
+        $0.textColor = .white
     }
     
     let toneStackView = UIStackView().then{
@@ -64,6 +78,7 @@ class MyMusicCell: UICollectionViewCell {
     let toneLabel = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 16)
         $0.text = "음정"
+        $0.textColor = .white
     }
     
     let beatStackView = UIStackView().then{
@@ -78,6 +93,7 @@ class MyMusicCell: UICollectionViewCell {
     let beatLabel = UILabel().then{
         $0.font = UIFont.boldSystemFont(ofSize: 16)
         $0.text = "박자"
+        $0.textColor = .white
     }
     
     let memoTextView = UITextView().then{
@@ -85,6 +101,7 @@ class MyMusicCell: UICollectionViewCell {
         $0.text = "asddd"
         $0.backgroundColor = .clear
         $0.font = UIFont.boldSystemFont(ofSize: 14)
+        $0.textColor = .white
 //        $0.backgroundColor =  #colorLiteral(red: 0.9451435208, green: 0.92419523, blue: 0.9724335074, alpha: 1)
     }
     
@@ -108,14 +125,16 @@ class MyMusicCell: UICollectionViewCell {
         self.numberLabel.text = "KY \(ownList.getNumber() ?? "")"
         self.titleLabel.text = ownList.getTitle()
         self.artistLabel.text = ownList.getArtist()
-        self.genderLabel.text = ownList.getGender()
-        self.toneLabel.text = ownList.getTone()
-        self.beatLabel.text = ownList.getBeat()
+        self.genderLabel.text = "👫  성별  \(ownList.getGender() ?? "")"
+        self.toneLabel.text = "🎵  음정  \(ownList.getTone() ?? "")"
+        self.beatLabel.text = "🥁  박자  \(ownList.getBeat() ?? "")"
         self.memoTextView.text = ownList.getMemo()
     }
     
     func setLayout(){
         let margin: CGFloat = 16
+        self.contentView.addSubview(bgImageView)
+        self.contentView.addSubview(bgView)
         self.contentView.addSubview(topView)
         self.contentView.addSubview(bottomView)
         topView.addSubview(numberLabel)
@@ -126,13 +145,21 @@ class MyMusicCell: UICollectionViewCell {
         bottomStackView.addArrangedSubview(genderStackView)
         bottomStackView.addArrangedSubview(toneStackView)
         bottomStackView.addArrangedSubview(beatStackView)
-        genderStackView.addArrangedSubview(genderImageView)
+//        genderStackView.addArrangedSubview(genderImageView)
         genderStackView.addArrangedSubview(genderLabel)
-        toneStackView.addArrangedSubview(toneImageView)
+//        toneStackView.addArrangedSubview(toneImageView)
         toneStackView.addArrangedSubview(toneLabel)
-        beatStackView.addArrangedSubview(beatImageView)
+//        beatStackView.addArrangedSubview(beatImageView)
         beatStackView.addArrangedSubview(beatLabel)
         bottomView.addSubview(memoTextView)
+        
+        bgImageView.snp.makeConstraints{
+            $0.edges.equalTo(self.contentView.safeAreaLayoutGuide)
+        }
+        
+        bgView.snp.makeConstraints{
+            $0.edges.equalTo(self.contentView.safeAreaLayoutGuide)
+        }
         
         topView.snp.makeConstraints{
             $0.top.leading.equalTo(self.contentView.safeAreaLayoutGuide).offset(margin)

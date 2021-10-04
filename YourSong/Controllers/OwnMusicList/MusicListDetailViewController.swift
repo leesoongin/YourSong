@@ -28,7 +28,12 @@ class MusicListDetailViewController: UIViewController {
         self.view.backgroundColor = .white
         
         config()
-        setLayout()
+        setLayout() 
+        setNavigationItem()
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.title = "내 플레이리스트"
     }
     
     func config(){
