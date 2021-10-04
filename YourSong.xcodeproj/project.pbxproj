@@ -11,6 +11,9 @@
 		A81470FA26FDAE280038CCCF /* SecondInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81470F926FDAE280038CCCF /* SecondInputViewController.swift */; };
 		A81470FF26FDAE7F0038CCCF /* ThirdInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81470FE26FDAE7F0038CCCF /* ThirdInputViewController.swift */; };
 		A814710726FE29B50038CCCF /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A814710626FE29B50038CCCF /* PickerViewController.swift */; };
+		A851DE15270B1F9000D31A7B /* TodayRecommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */; };
+		A851DE18270B37E500D31A7B /* MelonCrawlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */; };
+		A851DE1B270B5CAE00D31A7B /* RecommandAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */; };
 		A854CB0D26F605A300D39D6D /* PopularChart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A854CB0C26F605A300D39D6D /* PopularChart.storyboard */; };
 		A854CB1E26F60A1D00D39D6D /* TotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A854CB1D26F60A1D00D39D6D /* TotalViewController.swift */; };
 		A854CB2126F60A3500D39D6D /* BalladeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A854CB2026F60A3500D39D6D /* BalladeViewController.swift */; };
@@ -31,6 +34,7 @@
 		A868EE9626F2650A002BF67B /* GeumyoungCrawlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */; };
 		A868EE9B26F27435002BF67B /* OwnMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9A26F27435002BF67B /* OwnMusic.swift */; };
 		A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */; };
+		A87662A9270B16CD000156AE /* TodayRecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87662A8270B16CD000156AE /* TodayRecommandView.swift */; };
 		A8B2434627007953001C7E40 /* OwnMusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2434527007952001C7E40 /* OwnMusicList.swift */; };
 		A8B2436327018E15001C7E40 /* OwnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2436227018E15001C7E40 /* OwnListCell.swift */; };
 		A8B243662701A44C001C7E40 /* OwnListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B243652701A44C001C7E40 /* OwnListDataManager.swift */; };
@@ -53,6 +57,9 @@
 		A81470F926FDAE280038CCCF /* SecondInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInputViewController.swift; sourceTree = "<group>"; };
 		A81470FE26FDAE7F0038CCCF /* ThirdInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInputViewController.swift; sourceTree = "<group>"; };
 		A814710626FE29B50038CCCF /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandCell.swift; sourceTree = "<group>"; };
+		A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelonCrawlingManager.swift; sourceTree = "<group>"; };
+		A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandAlbums.swift; sourceTree = "<group>"; };
 		A854CB0C26F605A300D39D6D /* PopularChart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopularChart.storyboard; sourceTree = "<group>"; };
 		A854CB1D26F60A1D00D39D6D /* TotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalViewController.swift; sourceTree = "<group>"; };
 		A854CB2026F60A3500D39D6D /* BalladeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalladeViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +83,7 @@
 		A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeumyoungCrawlingManager.swift; sourceTree = "<group>"; };
 		A868EE9A26F27435002BF67B /* OwnMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusic.swift; sourceTree = "<group>"; };
 		A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartMusic.swift; sourceTree = "<group>"; };
+		A87662A8270B16CD000156AE /* TodayRecommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandView.swift; sourceTree = "<group>"; };
 		A8B2434527007952001C7E40 /* OwnMusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusicList.swift; sourceTree = "<group>"; };
 		A8B2436227018E15001C7E40 /* OwnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListCell.swift; sourceTree = "<group>"; };
 		A8B243652701A44C001C7E40 /* OwnListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListDataManager.swift; sourceTree = "<group>"; };
@@ -193,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				A868EE5726F254FB002BF67B /* ViewController.swift */,
-				A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */,
+				A87662A7270B166C000156AE /* Today */,
 				A868EE8726F25B00002BF67B /* PopularChartViewController.swift */,
 				A868EE8A26F25B32002BF67B /* MusicSearchViewController.swift */,
 				A8B243692701AB3F001C7E40 /* OwnMusicList */,
@@ -208,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				A868EE9526F2650A002BF67B /* GeumyoungCrawlingManager.swift */,
+				A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -220,8 +229,19 @@
 				A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */,
 				A8EBD6BE26FB413B00CF1EC9 /* SearchedMusic.swift */,
 				A8EBD6C526FB41AD00CF1EC9 /* MusicSearchResults.swift */,
+				A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A87662A7270B166C000156AE /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */,
+				A87662A8270B16CD000156AE /* TodayRecommandView.swift */,
+				A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 		A8B243692701AB3F001C7E40 /* OwnMusicList */ = {
@@ -380,14 +400,18 @@
 			files = (
 				A854CB1E26F60A1D00D39D6D /* TotalViewController.swift in Sources */,
 				A868EE5826F254FB002BF67B /* ViewController.swift in Sources */,
+				A851DE18270B37E500D31A7B /* MelonCrawlingManager.swift in Sources */,
+				A851DE15270B1F9000D31A7B /* TodayRecommandCell.swift in Sources */,
 				A81470FF26FDAE7F0038CCCF /* ThirdInputViewController.swift in Sources */,
 				A81470F626FDADEB0038CCCF /* FirstInputViewController.swift in Sources */,
+				A851DE1B270B5CAE00D31A7B /* RecommandAlbums.swift in Sources */,
 				A8B2436B2701AC62001C7E40 /* NamingViewController.swift in Sources */,
 				A854CB2726F60A7300D39D6D /* HiphopViewController.swift in Sources */,
 				A854CB2426F60A5500D39D6D /* DanceViewController.swift in Sources */,
 				A854CB2E26F63FE400D39D6D /* PopularChartManager.swift in Sources */,
 				A8EBD6B826FA092200CF1EC9 /* MusicSearchManager.swift in Sources */,
 				A868EE8B26F25B32002BF67B /* MusicSearchViewController.swift in Sources */,
+				A87662A9270B16CD000156AE /* TodayRecommandView.swift in Sources */,
 				A868EE5426F254FB002BF67B /* AppDelegate.swift in Sources */,
 				A868EE9626F2650A002BF67B /* GeumyoungCrawlingManager.swift in Sources */,
 				A868EE8826F25B00002BF67B /* PopularChartViewController.swift in Sources */,

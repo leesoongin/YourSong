@@ -14,7 +14,7 @@ class MyMusicCell: UICollectionViewCell {
     
     let topView = UIView()
     let bgImageView = UIImageView().then{
-        $0.image = UIImage(named: "detailListBackground")
+        $0.image = UIImage(named: "ownListBackground4")
         $0.layer.cornerRadius = 10
         $0.contentMode = .scaleAspectFill
     }
@@ -102,6 +102,7 @@ class MyMusicCell: UICollectionViewCell {
         $0.backgroundColor = .clear
         $0.font = UIFont.boldSystemFont(ofSize: 14)
         $0.textColor = .white
+        $0.isEditable = false
 //        $0.backgroundColor =  #colorLiteral(red: 0.9451435208, green: 0.92419523, blue: 0.9724335074, alpha: 1)
     }
     
@@ -128,7 +129,7 @@ class MyMusicCell: UICollectionViewCell {
         self.genderLabel.text = "👫  성별  \(ownList.getGender() ?? "")"
         self.toneLabel.text = "🎵  음정  \(ownList.getTone() ?? "")"
         self.beatLabel.text = "🥁  박자  \(ownList.getBeat() ?? "")"
-        self.memoTextView.text = "✏️  \(ownList.getMemo() ?? "")"
+        self.memoTextView.text = "✏️\n\n\(ownList.getMemo() ?? "")"
     }
     
     func setLayout(){
