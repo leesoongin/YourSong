@@ -14,9 +14,20 @@ protocol TodayMusicDelegate {
 }
 
 class TodayMusicViewController: UIViewController {
-   
-    lazy var todayRecommandView = TodayRecommandView(frame: .zero).then{
-        $0.delegate = self
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    
+    private lazy var stackView = UIStackView().then{
+        $0.axis = .vertical
+        $0.distribution = .equalSpacing
+        $0.spacing = 0.0
+        let todayRecommandView = TodayRecommandView(frame: .zero).then{
+            $0.delegate = self
+        }
+        let centuryChartView = CenturyChartView(frame: .zero)
+        
+        $0.addArrangedSubview(todayRecommandView)
+        $0.addArrangedSubview(centuryChartView)
     }
     
     override func viewDidLoad() {
@@ -37,12 +48,26 @@ extension TodayMusicViewController {
         self.navigationItem.backBarButtonItem?.tintColor = .black
     }
     
-    func setupLayout(){        
-        self.view.addSubview(todayRecommandView)
-        
-        todayRecommandView.snp.makeConstraints{
-            $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+    func setupLayout(){
+        let margin: CGFloat = 16.0
+        self.view.addSubview(scrollView)
+        scrollView.snp.makeConstraints{
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
+        
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        contentView.addSubview(stackView)
+        stackView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(margin * 2)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+
     }
 }
 

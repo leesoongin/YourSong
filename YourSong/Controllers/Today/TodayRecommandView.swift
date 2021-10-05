@@ -13,6 +13,11 @@ class TodayRecommandView: UIView {
     let layout = UICollectionViewFlowLayout().then{
         $0.scrollDirection = .horizontal
     }
+    private let todayPlayListLabel = UILabel().then{
+        $0.text = "🎧 오늘의 플레이리스트"
+        $0.font = UIFont.boldSystemFont(ofSize: 20)
+        $0.textColor = .black
+    }
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
         $0.dataSource = self
         $0.delegate = self
@@ -20,6 +25,9 @@ class TodayRecommandView: UIView {
         $0.backgroundColor = .systemBackground
         $0.showsHorizontalScrollIndicator = false
         $0.register(TodayRecommandCell.self, forCellWithReuseIdentifier: TodayRecommandCell.identifier)
+//        $0.register(TodayRecommandHeaderView.self,
+//                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+//                    withReuseIdentifier: TodayRecommandHeaderView.identifier)
     }
     
     // 크롤링 해 온 데이터 넣장
@@ -59,8 +67,21 @@ extension TodayRecommandView: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        guard kind == UICollectionView.elementKindSectionHeader,
+//              let header = collectionView.dequeueReusableSupplementaryView(
+//                ofKind: kind,
+//                withReuseIdentifier: TodayRecommandHeaderView.identifier,
+//                for: indexPath
+//              ) as? TodayRecommandHeaderView
+//        else {
+//            return UICollectionReusableView()
+//        }
+//
+//        header.setupViews()
+//
+//        return header
+//    }
 }
 
 extension TodayRecommandView: UICollectionViewDelegate {
@@ -74,24 +95,43 @@ extension TodayRecommandView: UICollectionViewDelegate {
 extension TodayRecommandView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let margin: CGFloat = 16.0
-        return CGSize(width: collectionView.frame.width - margin * 2, height: collectionView.frame.height - margin * 4)
+        let width: CGFloat = collectionView.frame.width - margin * 2
+        let height: CGFloat = width
+        
+        return CGSize(width: width, height: height)
     }
+    // section inset 설정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let inset: CGFloat = 16.0
-        return UIEdgeInsets(top: inset * 2, left: inset, bottom: inset * 2, right: inset)
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 32.0
     }
+    
+    //section header 크기 지정. 안하면 안뜸 ㅋㅋㅅㅋ
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: collectionView.frame.width, height: 40)
+//    }
+    
 }
 
 private extension TodayRecommandView {
     func setupSubviews() {
-        self.addSubview(collectionView)
+        let margin: CGFloat = 16.0
         
+        self.addSubview(collectionView)
+        self.addSubview(todayPlayListLabel)
+        
+        todayPlayListLabel.snp.makeConstraints{
+            $0.top.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().offset(margin)
+        }
         collectionView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(todayPlayListLabel.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(self.snp.width)
         }
     }
 }
