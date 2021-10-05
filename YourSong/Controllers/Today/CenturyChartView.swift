@@ -25,7 +25,7 @@ class CenturyChartView: UIView {
         $0.isPagingEnabled = true
         $0.backgroundColor = .systemBackground
         $0.showsHorizontalScrollIndicator = false
-        $0.register(TodayRecommandCell.self, forCellWithReuseIdentifier: TodayRecommandCell.identifier)
+        $0.register(CenturyChartCell.self, forCellWithReuseIdentifier: CenturyChartCell.identifier)
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,16 +49,11 @@ extension CenturyChartView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodayRecommandCell.identifier, for: indexPath) as? TodayRecommandCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CenturyChartCell.identifier, for: indexPath) as? CenturyChartCell else {
             return UICollectionViewCell()
         }
         
-        cell.backgroundColor = .secondaryLabel
-        cell.musicCountLabel.text = "\(indexPath.row)"
-//        cell.config(imageUrl: albums[indexPath.row].getThumbnailImageUrl(),
-//                    title: albums[indexPath.row].getAlbumTitle(),
-//                    musicCount: albums[indexPath.row].getMusicCount(),
-//                    hashTag: albums[indexPath.row].getHashTag())
+        cell.config(idx: indexPath.row)
         
         return cell
     }

@@ -38,6 +38,7 @@
 		A868EE9B26F27435002BF67B /* OwnMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9A26F27435002BF67B /* OwnMusic.swift */; };
 		A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */; };
 		A87662A9270B16CD000156AE /* TodayRecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87662A8270B16CD000156AE /* TodayRecommandView.swift */; };
+		A8852E3C270CD83400508367 /* CenturyChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8852E3B270CD83400508367 /* CenturyChartCell.swift */; };
 		A8B2434627007953001C7E40 /* OwnMusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2434527007952001C7E40 /* OwnMusicList.swift */; };
 		A8B2436327018E15001C7E40 /* OwnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2436227018E15001C7E40 /* OwnListCell.swift */; };
 		A8B243662701A44C001C7E40 /* OwnListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B243652701A44C001C7E40 /* OwnListDataManager.swift */; };
@@ -92,6 +93,7 @@
 		A868EE9A26F27435002BF67B /* OwnMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusic.swift; sourceTree = "<group>"; };
 		A868EE9E26F274EA002BF67B /* PopularChartMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularChartMusic.swift; sourceTree = "<group>"; };
 		A87662A8270B16CD000156AE /* TodayRecommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandView.swift; sourceTree = "<group>"; };
+		A8852E3B270CD83400508367 /* CenturyChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyChartCell.swift; sourceTree = "<group>"; };
 		A8B2434527007952001C7E40 /* OwnMusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnMusicList.swift; sourceTree = "<group>"; };
 		A8B2436227018E15001C7E40 /* OwnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListCell.swift; sourceTree = "<group>"; };
 		A8B243652701A44C001C7E40 /* OwnListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnListDataManager.swift; sourceTree = "<group>"; };
@@ -250,13 +252,19 @@
 			children = (
 				A868EE8D26F25BA3002BF67B /* TodayMusicViewController.swift */,
 				A87662A8270B16CD000156AE /* TodayRecommandView.swift */,
-				A851DE37270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift */,
-				A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */,
-				A851DE3A270B819500D31A7B /* TodayRecommandDetailCell.swift */,
-				A8F2B380270C660D00C55C0D /* TodayRecommandHeaderView.swift */,
 				A8F2B388270CD78A00C55C0D /* CenturyChartView.swift */,
+				A8852E3E270CDAD900508367 /* Details */,
+				A8F2B38B270CD7D600C55C0D /* Cells */,
 			);
 			path = Today;
+			sourceTree = "<group>";
+		};
+		A8852E3E270CDAD900508367 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				A851DE37270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		A8B243692701AB3F001C7E40 /* OwnMusicList */ = {
@@ -286,6 +294,17 @@
 				A8B243752703856C001C7E40 /* MyMusicCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A8F2B38B270CD7D600C55C0D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A8F2B380270C660D00C55C0D /* TodayRecommandHeaderView.swift */,
+				A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */,
+				A851DE3A270B819500D31A7B /* TodayRecommandDetailCell.swift */,
+				A8852E3B270CD83400508367 /* CenturyChartCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E1CDFE7A2737F65B603C4FA1 /* Pods */ = {
@@ -442,6 +461,7 @@
 				A814710726FE29B50038CCCF /* PickerViewController.swift in Sources */,
 				A8B243762703856C001C7E40 /* MyMusicCell.swift in Sources */,
 				A8EBD6BF26FB413B00CF1EC9 /* SearchedMusic.swift in Sources */,
+				A8852E3C270CD83400508367 /* CenturyChartCell.swift in Sources */,
 				A8EBD6C626FB41AD00CF1EC9 /* MusicSearchResults.swift in Sources */,
 				A868EE9F26F274EA002BF67B /* PopularChartMusic.swift in Sources */,
 				A8B2434627007953001C7E40 /* OwnMusicList.swift in Sources */,
