@@ -87,7 +87,7 @@ extension TodayRecommandView: UICollectionViewDataSource {
 extension TodayRecommandView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let delegate = self.delegate {
-            delegate.moveToDetailView(index: indexPath.row)
+            delegate.moveToTodayDetailView(index: indexPath.row)
         }
     }
 }

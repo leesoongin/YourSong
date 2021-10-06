@@ -28,12 +28,19 @@ class TodayRecommandDetailViewController: UIViewController {
         self.view.backgroundColor = .white
         
         setupSubviews()
+        setupNavigationController()
+        
         melonCrawlingManager.requestMusicFromAlbum(index: idx) { response in
             self.recommandMusics.append(contentsOf: response)
             self.collectionView.reloadData()
         }
     }
     
+    func setupNavigationController(){
+        self.navigationItem.title = "오늘의 추천곡"
+        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.navigationBar.barTintColor = .white
+    }
 }
 
 extension TodayRecommandDetailViewController: UICollectionViewDataSource{
@@ -83,7 +90,7 @@ private extension TodayRecommandDetailViewController {
         self.view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(margin * 2)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(margin)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(margin * 2)
             $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
         }

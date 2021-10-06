@@ -10,7 +10,8 @@ import SnapKit
 import Then
 
 protocol TodayMusicDelegate {
-    func moveToDetailView(index: Int)
+    func moveToTodayDetailView(index: Int)
+    func moveToCenturyDetailView(index: Int)
 }
 
 class TodayMusicViewController: UIViewController {
@@ -24,7 +25,9 @@ class TodayMusicViewController: UIViewController {
         let todayRecommandView = TodayRecommandView(frame: .zero).then{
             $0.delegate = self
         }
-        let centuryChartView = CenturyChartView(frame: .zero)
+        let centuryChartView = CenturyChartView(frame: .zero).then{
+            $0.delegate = self
+        }
         
         $0.addArrangedSubview(todayRecommandView)
         $0.addArrangedSubview(centuryChartView)
@@ -46,6 +49,7 @@ extension TodayMusicViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = .black
+        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     func setupLayout(){
@@ -72,10 +76,17 @@ extension TodayMusicViewController {
 }
 
 extension TodayMusicViewController: TodayMusicDelegate {
-    func moveToDetailView(index: Int) {
+    func moveToTodayDetailView(index: Int) {
         let todayRecommandDetailVC = TodayRecommandDetailViewController()
         todayRecommandDetailVC.idx = index
         
-        self.present(todayRecommandDetailVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(todayRecommandDetailVC, animated: true)
+    }
+    
+    func moveToCenturyDetailView(index: Int) {
+        let centuryDetailVC = CenturyDetailViewController()
+        centuryDetailVC.idx = index
+        
+        self.navigationController?.pushViewController(centuryDetailVC, animated: true)
     }
 }

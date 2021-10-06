@@ -11,6 +11,9 @@
 		A81470FA26FDAE280038CCCF /* SecondInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81470F926FDAE280038CCCF /* SecondInputViewController.swift */; };
 		A81470FF26FDAE7F0038CCCF /* ThirdInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81470FE26FDAE7F0038CCCF /* ThirdInputViewController.swift */; };
 		A814710726FE29B50038CCCF /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A814710626FE29B50038CCCF /* PickerViewController.swift */; };
+		A833F178270DD3E8009BDEB1 /* CenturyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833F177270DD3E8009BDEB1 /* CenturyDetailViewController.swift */; };
+		A833F17B270DD8C6009BDEB1 /* CenturyChartMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833F17A270DD8C6009BDEB1 /* CenturyChartMusic.swift */; };
+		A833F182270DDC9A009BDEB1 /* CenturyChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833F181270DDC9A009BDEB1 /* CenturyChartManager.swift */; };
 		A851DE15270B1F9000D31A7B /* TodayRecommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */; };
 		A851DE18270B37E500D31A7B /* MelonCrawlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */; };
 		A851DE1B270B5CAE00D31A7B /* RecommandAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */; };
@@ -63,6 +66,9 @@
 		A81470F926FDAE280038CCCF /* SecondInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInputViewController.swift; sourceTree = "<group>"; };
 		A81470FE26FDAE7F0038CCCF /* ThirdInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInputViewController.swift; sourceTree = "<group>"; };
 		A814710626FE29B50038CCCF /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		A833F177270DD3E8009BDEB1 /* CenturyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyDetailViewController.swift; sourceTree = "<group>"; };
+		A833F17A270DD8C6009BDEB1 /* CenturyChartMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyChartMusic.swift; sourceTree = "<group>"; };
+		A833F181270DDC9A009BDEB1 /* CenturyChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyChartManager.swift; sourceTree = "<group>"; };
 		A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandCell.swift; sourceTree = "<group>"; };
 		A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelonCrawlingManager.swift; sourceTree = "<group>"; };
 		A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandAlbums.swift; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 				A854CB2D26F63FE400D39D6D /* PopularChartManager.swift */,
 				A8EBD6B726FA092200CF1EC9 /* MusicSearchManager.swift */,
 				A8B243652701A44C001C7E40 /* OwnListDataManager.swift */,
+				A833F181270DDC9A009BDEB1 /* CenturyChartManager.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -243,6 +250,7 @@
 				A8EBD6C526FB41AD00CF1EC9 /* MusicSearchResults.swift */,
 				A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */,
 				A851DE34270B733600D31A7B /* RecommandMusic.swift */,
+				A833F17A270DD8C6009BDEB1 /* CenturyChartMusic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				A851DE37270B7E8B00D31A7B /* TodayRecommandDetailViewController.swift */,
+				A833F177270DD3E8009BDEB1 /* CenturyDetailViewController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -433,6 +442,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A851DE35270B733600D31A7B /* RecommandMusic.swift in Sources */,
+				A833F178270DD3E8009BDEB1 /* CenturyDetailViewController.swift in Sources */,
+				A833F182270DDC9A009BDEB1 /* CenturyChartManager.swift in Sources */,
 				A854CB1E26F60A1D00D39D6D /* TotalViewController.swift in Sources */,
 				A868EE5826F254FB002BF67B /* ViewController.swift in Sources */,
 				A851DE18270B37E500D31A7B /* MelonCrawlingManager.swift in Sources */,
@@ -450,6 +461,7 @@
 				A868EE8B26F25B32002BF67B /* MusicSearchViewController.swift in Sources */,
 				A87662A9270B16CD000156AE /* TodayRecommandView.swift in Sources */,
 				A868EE5426F254FB002BF67B /* AppDelegate.swift in Sources */,
+				A833F17B270DD8C6009BDEB1 /* CenturyChartMusic.swift in Sources */,
 				A868EE9626F2650A002BF67B /* GeumyoungCrawlingManager.swift in Sources */,
 				A868EE8826F25B00002BF67B /* PopularChartViewController.swift in Sources */,
 				A8B243662701A44C001C7E40 /* OwnListDataManager.swift in Sources */,

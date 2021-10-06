@@ -27,14 +27,15 @@ class CenturyChartView: UIView {
         $0.showsHorizontalScrollIndicator = false
         $0.register(CenturyChartCell.self, forCellWithReuseIdentifier: CenturyChartCell.identifier)
     }
+    
+    let manager = MelonCrawlingManager.shared
+    var delegate: TodayMusicDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupSubviews()
-//        melonCrawlingManager.requestRecommandAlbums{ response in
-//            self.albums.append(contentsOf: response)
-//            self.collectionView.reloadData()
-//        }
+
     }
     
     required init?(coder: NSCoder) {
@@ -44,8 +45,7 @@ class CenturyChartView: UIView {
 
 extension CenturyChartView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.albums.count
-        return 11
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,9 +62,7 @@ extension CenturyChartView: UICollectionViewDataSource {
 
 extension CenturyChartView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let delegate = self.delegate {
-//            delegate.moveToDetailView(index: indexPath.row)
-//        }
+        self.delegate?.moveToCenturyDetailView(index: indexPath.row)
     }
 }
 

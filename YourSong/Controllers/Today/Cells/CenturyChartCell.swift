@@ -58,8 +58,6 @@ class CenturyChartCell: UICollectionViewCell {
             self.titleLabel.text = "2000년대"
         case 5:
             self.titleLabel.text = "2010년대"
-        case 6:
-            self.titleLabel.text = "2020년대"
         default:
             print("config error")
         }
