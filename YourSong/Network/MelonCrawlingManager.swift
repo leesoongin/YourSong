@@ -41,10 +41,10 @@ import Alamofire
 
 
 enum TodayRecommandPages {
-    static let firstPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=493537910"
-    static let secondPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=497666712"
-    static let thirdPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=101470463"
-    static let fourthPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=494283599"
+    static let firstPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=429848497"
+    static let secondPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=493537910"
+    static let thirdPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=454819813"
+    static let fourthPage = "https://www.melon.com/mymusic/dj/mymusicdjplaylistview_inform.htm?plylstSeq=497194219"
 }
 
 enum CenturyChartPages {
@@ -126,7 +126,7 @@ class MelonCrawlingManager {
                 let elements: Elements = try doc.select("#djPlylstList > div > ul > li")
                 for (index, element) in elements.enumerated() {
                     hashTag = []
-                    if (index == 4 || index == 7 || index == 17 || index == 19){
+                    if (index == 1 || index == 6 || index == 8 || index == 12){
                         thumbnailImage = try element.select("div.thumb > a > img").attr("src").description
                         album = try element.select("div.entry > div.info > a.ellipsis.album_name").text()
                         musicCount = try element.select("div.entry > div.meta > span").text() // 발매일

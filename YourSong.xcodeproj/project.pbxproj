@@ -14,6 +14,7 @@
 		A833F178270DD3E8009BDEB1 /* CenturyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833F177270DD3E8009BDEB1 /* CenturyDetailViewController.swift */; };
 		A833F17B270DD8C6009BDEB1 /* CenturyChartMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833F17A270DD8C6009BDEB1 /* CenturyChartMusic.swift */; };
 		A833F182270DDC9A009BDEB1 /* CenturyChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833F181270DDC9A009BDEB1 /* CenturyChartManager.swift */; };
+		A833F185270DE01F009BDEB1 /* CenturyChartDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833F184270DE01F009BDEB1 /* CenturyChartDetailCell.swift */; };
 		A851DE15270B1F9000D31A7B /* TodayRecommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */; };
 		A851DE18270B37E500D31A7B /* MelonCrawlingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */; };
 		A851DE1B270B5CAE00D31A7B /* RecommandAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */; };
@@ -69,6 +70,7 @@
 		A833F177270DD3E8009BDEB1 /* CenturyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyDetailViewController.swift; sourceTree = "<group>"; };
 		A833F17A270DD8C6009BDEB1 /* CenturyChartMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyChartMusic.swift; sourceTree = "<group>"; };
 		A833F181270DDC9A009BDEB1 /* CenturyChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyChartManager.swift; sourceTree = "<group>"; };
+		A833F184270DE01F009BDEB1 /* CenturyChartDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturyChartDetailCell.swift; sourceTree = "<group>"; };
 		A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommandCell.swift; sourceTree = "<group>"; };
 		A851DE17270B37E500D31A7B /* MelonCrawlingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelonCrawlingManager.swift; sourceTree = "<group>"; };
 		A851DE1A270B5CAE00D31A7B /* RecommandAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandAlbums.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				A851DE14270B1F9000D31A7B /* TodayRecommandCell.swift */,
 				A851DE3A270B819500D31A7B /* TodayRecommandDetailCell.swift */,
 				A8852E3B270CD83400508367 /* CenturyChartCell.swift */,
+				A833F184270DE01F009BDEB1 /* CenturyChartDetailCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A833F185270DE01F009BDEB1 /* CenturyChartDetailCell.swift in Sources */,
 				A851DE35270B733600D31A7B /* RecommandMusic.swift in Sources */,
 				A833F178270DD3E8009BDEB1 /* CenturyDetailViewController.swift in Sources */,
 				A833F182270DDC9A009BDEB1 /* CenturyChartManager.swift in Sources */,

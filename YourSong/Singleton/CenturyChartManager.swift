@@ -20,23 +20,45 @@ class CenturyChartManager {
     private var centuryChartIn2010: [CenturyChartMusic] = [CenturyChartMusic]()
     
     //getter
-    func getCenturyChartIn1960() -> [CenturyChartMusic] {
-        return self.centuryChartIn1960
+    func getCenturyChart(index: Int) -> [CenturyChartMusic] {
+        switch index {
+        case 0:
+            return self.centuryChartIn1960
+        case 1:
+            return self.centuryChartIn1970
+        case 2:
+            return self.centuryChartIn1980
+        case 3:
+            return self.centuryChartIn1990
+        case 4:
+            return self.centuryChartIn2000
+        case 5:
+            return self.centuryChartIn2010
+        default:
+            return []
+        }
     }
-    func getCenturyChartIn1970() -> [CenturyChartMusic] {
-        return self.centuryChartIn1970
+   
+    
+    //setter
+    func extendCenturyChart(index: Int, _ chart: [CenturyChartMusic]){
+        switch index {
+        case 0:
+            self.centuryChartIn1960.append(contentsOf: chart)
+        case 1:
+            self.centuryChartIn1970.append(contentsOf: chart)
+        case 2:
+            self.centuryChartIn1980.append(contentsOf: chart)
+        case 3:
+            self.centuryChartIn1990.append(contentsOf: chart)
+        case 4:
+            self.centuryChartIn2000.append(contentsOf: chart)
+        case 5:
+            self.centuryChartIn2010.append(contentsOf: chart)
+        default:
+            print("centuryChartManager extend error.")
+        }
     }
-    func getCenturyChartIn1980() -> [CenturyChartMusic] {
-        return self.centuryChartIn1980
-    }
-    func getCenturyChartIn1990() -> [CenturyChartMusic] {
-        return self.centuryChartIn1990
-    }
-    func getCenturyChartIn2000() -> [CenturyChartMusic] {
-        return self.centuryChartIn2000
-    }
-    func getCenturyChartIn2010() -> [CenturyChartMusic] {
-        return self.centuryChartIn2010
-    }
+   
 }
 
