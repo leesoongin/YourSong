@@ -21,7 +21,7 @@ class ViewController: UITabBarController {
     }
     
     private func setUpTabBar(){
-        let todayMusicViewController = TodayMusicViewController()
+        let todayMusicViewController = UINavigationController(rootViewController: TodayMusicViewController())
         todayMusicViewController.tabBarItem.image = UIImage(named: "recommentIcon")
         todayMusicViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 16, left: 0, bottom: -16, right: 0)
         

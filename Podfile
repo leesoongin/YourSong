@@ -13,4 +13,5 @@ pod 'Alamofire', '~> 5.4'
 pod 'RealmSwift'
 pod 'XLPagerTabStrip', '~> 9.0'
 pod 'NVActivityIndicatorView'
+pod 'Kingfisher', '~> 7.0'
 end
