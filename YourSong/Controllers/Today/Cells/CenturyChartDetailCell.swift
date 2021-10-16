@@ -28,7 +28,7 @@ class CenturyChartDetailCell: UITableViewCell {
     let addButton = UIButton().then{
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
         $0.tintColor = .black
-        $0.addTarget(self, action: #selector(addToOwnList(_:)), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(addToOwnList(_:)), for: .touchUpInside)
     }
     
     let centerStackView = UIStackView().then{
@@ -38,9 +38,9 @@ class CenturyChartDetailCell: UITableViewCell {
         $0.spacing = 0.0
     }
     
-    @objc func addToOwnList(_ sender: UIButton){
-        
-    }
+//    @objc func addToOwnList(_ sender: UIButton){
+//
+//    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
